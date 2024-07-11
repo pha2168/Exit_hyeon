@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/PHA/PHAScene.unity
+- path: Assets/CGM/CGMScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
