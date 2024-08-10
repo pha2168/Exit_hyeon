@@ -5,66 +5,63 @@ using System.IO;
 using System.Reflection;
 
 
-public class PlayerData
-{
-    //저장할 플레이어 관련 데이터
-    public string name;
-    public int level;
-    public int coin;
-    public int item;
-
-}
-
 public class Datamanager : MonoBehaviour
 {
-    //singleton
-    public static Datamanager Instance;
+    static GameObject container;
 
-    PlayerData nowPlayer = new PlayerData();
+    //싱글톤 
+    static Datamanager instance;
+    public static Datamanager Instance
+    {
+        get
+        {
+            if (!instance)
+            {
+                //새로운 오브젝트 생성
+                container = new GameObject();
+                //오브젝트 이름 설정
+                container.name = "Datamanager";
+                //새로운 오브젝트에 데이터 매니저 넣고, 인스턴스에 할당
+                instance = container.AddComponent(typeof(Datamanager)) as Datamanager;
+                //해당 오브젝트가 사라지지 않도록 유지
+                DontDestroyOnLoad(container);
+            }
+            return instance;
+        }
+    }
 
-    string path;
+    //게임 데이터 파일 이름 설정
+    string GameDataFileName = "GameData.json";
+
+    //저장용 클래스 변수
+    public Data data = new Data();
+
     string filename = "save";
 
-    private void Awake()
+    // 불러오기
+    public void LoadGameData()
     {
-        #region singleton
-        if (Instance == null)
+        string filePath = Application.persistentDataPath + "/" + GameDataFileName;
+
+        // 저장된 게임이 있다면
+        if (File.Exists(filePath))
         {
-            Instance = this;
+            // 저장된 파일 읽어오고 Json을 클래스 형식으로 전환해서 할당
+            string FromJsonData = File.ReadAllText(filePath);
+            data = JsonUtility.FromJson<Data>(FromJsonData);
+            print("불러오기 완료");
         }
-        else if (Instance != this)
-        {
-            Destroy(Instance.gameObject);
-        }
-        DontDestroyOnLoad(Instance.gameObject);
-        #endregion
-
-        path = Application.persistentDataPath + "/";
     }
 
-    void Start()
+
+    // 저장하기
+    public void SaveGameData()
     {
-       string data = JsonUtility.ToJson(nowPlayer);
+        // 클래스를 Json 형식으로 전환 (true : 가독성 좋게 작성)
+        string ToJsonData = JsonUtility.ToJson(data, true);
+        string filePath = Application.persistentDataPath + "/" + GameDataFileName;
 
-        File.WriteAllText(path + filename, data);
-
-        SaveData();
-
-        LoadData();
-
-        Debug.Log(path);
-        
-    }
-
-    public void SaveData()
-    {
-        string data = JsonUtility.ToJson(nowPlayer);
-        File.WriteAllText(path + filename, data );
-    }
-
-    public void LoadData()
-    {
-        string data = File.ReadAllText(path + filename);
-        nowPlayer = JsonUtility.FromJson<PlayerData>(data);
+        // 이미 저장된 파일이 있다면 덮어쓰고, 없다면 새로 만들어서 저장
+        File.WriteAllText(filePath, ToJsonData);
     }
 }
