@@ -2,283 +2,146 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//테트리스 블럭 3D블럭으로 받아야 함 hyeon gpt에서 이어서 하기
-
 public class TetrisTower : MonoBehaviour
 {
     public int Width = 4;
-    public int Height = 4;
-    public int Depth = 10;
-    public float interval = 10.0f;
-    public float dropSpeed = 1.0f;
+    public int Height = 20;
+    public int Depth = 4;  // Z 축의 깊이 추가
+    public float DropSpeed = 1.0f;
+    public float MoveInterval = 1.0f;  // 이동 시 한 번에 이동할 거리 (블록 크기)
 
     private GameObject currentBlock;
     private BlockSpawner blockSpawner;
 
-    private List<GameObject> activeBlocks = new List<GameObject>();
-    private char[] Blocks;
-    private bool blockDataLoaded = false;
-
     void Start()
     {
-        Blocks = new char[Width * Height * Depth];
         blockSpawner = FindObjectOfType<BlockSpawner>();
-        currentBlock = blockSpawner.SpawnBlock();
-        StartCoroutine(DropBlock(currentBlock));
+        SpawnNewBlock();
     }
 
-    IEnumerator DropBlock(GameObject block)
+    void Update()
     {
-        while (true)
+        HandleMovementInput();
+        HandleRotationInput();
+
+        if (currentBlock != null)
         {
-            block.transform.position += Vector3.down * dropSpeed * Time.deltaTime;
+            currentBlock.transform.position += Vector3.down * DropSpeed * Time.deltaTime;
 
-            if (CheckCollision(block))
+            if (CheckCollision())
             {
-                block.transform.position = new Vector3(
-                    Mathf.Round(block.transform.position.x / interval) * interval,
-                    Mathf.Round(block.transform.position.y / interval) * interval,
-                    Mathf.Round(block.transform.position.z / interval) * interval
-                );
-
-                activeBlocks.Remove(block);
-                CheckAndClearFullFloors();
-
-                // 새로운 블록 스폰
-                currentBlock = blockSpawner.SpawnBlock();
-                StartCoroutine(DropBlock(currentBlock));
-                break;
+                currentBlock.transform.position -= Vector3.down * DropSpeed * Time.deltaTime; // 충돌 시 위치 보정
+                currentBlock = null; // 현재 블록을 고정하고 다음 블록 준비
+                SpawnNewBlock();
             }
-
-            HandleMovementInput(block); // 입력 처리 추가
-
-            yield return null;
         }
     }
 
-    void HandleMovementInput(GameObject block)
+    void HandleMovementInput()
     {
+        if (currentBlock == null) return;
+
         Vector3 moveDirection = Vector3.zero;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            moveDirection = Vector3.left * interval;
+            moveDirection = Vector3.left * MoveInterval;
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            moveDirection = Vector3.right * interval;
+            moveDirection = Vector3.right * MoveInterval;
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            moveDirection = Vector3.forward * interval;
+            moveDirection = Vector3.forward * MoveInterval;
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            moveDirection = Vector3.back * interval;
+            moveDirection = Vector3.back * MoveInterval;
         }
 
-        Vector3 newPosition = block.transform.position + moveDirection;
+        Vector3 newPosition = currentBlock.transform.position + moveDirection;
 
-        // 이동 후 충돌 검사를 통해 이동이 가능한지 확인
         if (IsValidMove(newPosition))
         {
-            block.transform.position = newPosition;
+            currentBlock.transform.position = newPosition;
+        }
+    }
+
+    void HandleRotationInput()
+    {
+        if (currentBlock == null) return;
+
+        Vector3 rotationAxis = Vector3.zero;
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            rotationAxis = Vector3.up;
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            rotationAxis = Vector3.down;
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            rotationAxis = Vector3.left;
+        }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            rotationAxis = Vector3.right;
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            rotationAxis = Vector3.forward;
+        }
+        else if (Input.GetKeyDown(KeyCode.Y))
+        {
+            rotationAxis = Vector3.back;
+        }
+
+        if (rotationAxis != Vector3.zero)
+        {
+            currentBlock.transform.Rotate(rotationAxis, 90, Space.World);
+
+            if (!IsValidMove(currentBlock.transform.position))
+            {
+                currentBlock.transform.Rotate(rotationAxis, -90, Space.World); // 회전 되돌리기
+            }
+        }
+    }
+
+    void SpawnNewBlock()
+    {
+        if (blockSpawner != null)
+        {
+            currentBlock = blockSpawner.SpawnBlock();
+            currentBlock.transform.position = new Vector3(Width / 2, Height, Depth / 2); // 타워의 중심에서 소환
         }
     }
 
     bool IsValidMove(Vector3 position)
     {
-        // 타워의 경계를 넘지 않는지 확인
-        if (position.x < 0 || position.x >= Width * interval ||
-            position.z < 0 || position.z >= Depth * interval)
+        if (position.x < 0 || position.x >= Width ||
+            position.z < 0 || position.z >= Depth || // Z 축의 경계 추가
+            position.y < 0)
         {
             return false;
         }
 
-        // 다른 블록과의 충돌 여부 확인
-        RaycastHit hit;
-        if (Physics.Raycast(position, Vector3.down, out hit, interval))
-        {
-            if (hit.collider != null && hit.collider.gameObject != currentBlock)
-            {
-                return false;
-            }
-        }
+        // 이 부분에 다른 블록과의 충돌 검사를 추가할 수 있습니다.
 
         return true;
     }
 
-    bool CheckCollision(GameObject block)
+    bool CheckCollision()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(block.transform.position, Vector3.down, out hit, interval))
+        if (currentBlock.transform.position.y <= 0)
         {
-            if (hit.collider != null && hit.collider.gameObject != block)
-            {
-                return true;
-            }
+            return true;
         }
+
+        // 다른 블록과의 충돌 여부는 여기서 처리할 수 있습니다.
 
         return false;
-    }
-
-    void CheckAndClearFullFloors()
-    {
-        for (int y = 0; y < Height; y++)
-        {
-            bool isFloorFull = true;
-            for (int z = 0; z < Depth; z++)
-            {
-                for (int x = 0; x < Width; x++)
-                {
-                    int index = z * (Width * Height) + y * Width + x;
-                    if (Blocks[index] == '0')
-                    {
-                        isFloorFull = false;
-                        break;
-                    }
-                }
-                if (!isFloorFull) break;
-            }
-
-            if (isFloorFull)
-            {
-                ClearFloor(y);
-                DropBlocksAbove(y);
-            }
-        }
-    }
-
-    void ClearFloor(int y)
-    {
-        for (int z = 0; z < Depth; z++)
-        {
-            for (int x = 0; x < Width; x++)
-            {
-                int index = z * (Width * Height) + y * Width + x;
-                Blocks[index] = '0';
-
-                RaycastHit hit;
-                Vector3 position = new Vector3(x, y, z) * interval;
-                if (Physics.Raycast(position, Vector3.up, out hit, interval))
-                {
-                    Destroy(hit.collider.gameObject);
-                }
-            }
-        }
-    }
-
-    void DropBlocksAbove(int y)
-    {
-        for (int currentY = y + 1; currentY < Height; currentY++)
-        {
-            for (int z = 0; z < Depth; z++)
-            {
-                for (int x = 0; x < Width; x++)
-                {
-                    int currentIndex = z * (Width * Height) + currentY * Width + x;
-                    int belowIndex = z * (Width * Height) + (currentY - 1) * Width + x;
-
-                    if (Blocks[currentIndex] != '0')
-                    {
-                        Blocks[belowIndex] = Blocks[currentIndex];
-                        Blocks[currentIndex] = '0';
-
-                        RaycastHit hit;
-                        Vector3 position = new Vector3(x, currentY, z) * interval;
-                        if (Physics.Raycast(position, Vector3.up, out hit, interval))
-                        {
-                            GameObject block = hit.collider.gameObject;
-                            block.transform.position += Vector3.down * interval;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            RotateActiveBlocks(Vector3.right);
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            RotateActiveBlocks(Vector3.left);
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            RotateActiveBlocks(Vector3.up);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            RotateActiveBlocks(Vector3.down);
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            RotateActiveBlocks(Vector3.forward);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            RotateActiveBlocks(Vector3.back);
-        }
-        else if (Input.GetKeyDown(KeyCode.Space)) // NextBlock과 교체하는 기능
-        {
-            SwapCurrentAndNextBlock();
-        }
-    }
-
-    void RotateActiveBlocks(Vector3 axis)
-    {
-        if (currentBlock != null)
-        {
-            currentBlock.transform.Rotate(axis, 90f);
-        }
-    }
-
-    void SwapCurrentAndNextBlock()
-    {
-        if (currentBlock != null && blockSpawner != null)
-        {
-            GameObject nextBlock = blockSpawner.GetNextBlock();
-            Vector3 currentPos = currentBlock.transform.position;
-
-            Destroy(currentBlock);
-            currentBlock = Instantiate(nextBlock, currentPos, Quaternion.identity);
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        TetrisBlock tetrisBlock = other.gameObject.GetComponent<TetrisBlock>();
-
-        if (tetrisBlock != null && !blockDataLoaded && !tetrisBlock.hasInteracted)
-        {
-            char[] blockData = tetrisBlock.GetBlockData();
-            LoadTower(blockData);
-            blockDataLoaded = true;
-            tetrisBlock.hasInteracted = true;
-        }
-    }
-
-    void LoadTower(char[] blockData)
-    {
-        // blockData가 배치할 단일 블록에 대한 데이터를 포함하고 있다고 가정
-        for (int i = 0; i < blockData.Length; i++)
-        {
-            if (blockData[i] != '0') // '0'은 빈 공간을 나타냄
-            {
-                // 선형 인덱스 i로부터 x, y, z를 계산
-                int x = i % Width;
-                int y = (i / Width) % Height;
-                int z = i / (Width * Height);
-
-                int index = z * (Width * Height) + y * Width + x;
-
-                // Blocks 배열 업데이트
-                Blocks[index] = blockData[i];
-            }
-        }
     }
 }

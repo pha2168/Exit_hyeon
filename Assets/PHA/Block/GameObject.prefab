@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3527699387587992195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6485400010712854745}
+  - component: {fileID: 5694449861802490651}
+  - component: {fileID: 5258262890395744131}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6485400010712854745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527699387587992195}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3, y: -8.5, z: 23.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5694449861802490651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527699387587992195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83a1b3748629a474db24a0b401e24f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Width: 4
+  Height: 4
+  Depth: 10
+  interval: 10
+  dropSpeed: 1
+  Block1: {fileID: 6659230178451354259, guid: 555d67cc72fb6c844933e96f694322b9, type: 3}
+  Block2: {fileID: 6051661946274265556, guid: 24a69c78dd215994493e4a35e849f5b5, type: 3}
+  Block3: {fileID: 1754810116065504135, guid: 0757a0c356dc73d42990a34521b1e4df, type: 3}
+  Block4: {fileID: 2739432790944224, guid: aee568a6ee7c4e3499dbef0ccf53059c, type: 3}
+  Block5: {fileID: 4921106315493432498, guid: 1fda747923ab4694280039dfd517ffaa, type: 3}
+  Block6: {fileID: 5201408658972872882, guid: 8dc707189080b6b4883395d14e9d2f76, type: 3}
+--- !u!114 &5258262890395744131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527699387587992195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88a3cbc2649e0b459af2a76329dd1e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TetrisBlocks:
+  - {fileID: 4475425045070269275, guid: eb2dc835dbc20a44f801313a6a9f3f69, type: 3}
+  - {fileID: 8153042456486256927, guid: dbe6a836012837a488a003e950545197, type: 3}
+  - {fileID: 2511616596727614723, guid: 810750f5cb2c4094583a63864500d72b, type: 3}
+  - {fileID: 2470379697903376843, guid: 1930346f0cf876e439c0250036cb2588, type: 3}
+  - {fileID: 1932978877142265062, guid: 623714aedfe6a0146815d0b5bf3ad9ac, type: 3}
+  - {fileID: 7023018160451901260, guid: 14f99403400b9d146a085a88cc310123, type: 3}
+  - {fileID: 2715891867761153477, guid: cbb79b85ac5ab2847816a2b500344872, type: 3}
+  - {fileID: 8731666201255311474, guid: 651c949b472508a48b2f73519e666878, type: 3}
