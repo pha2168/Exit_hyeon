@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LEFTSITE
+  - RIGHTSITE
+  - FORWARDSITE
+  - BACKSITE
+  - DOWNSITE
+  - 123123
+  - BLOCKDOWNCHECK
+  - BLOCK
   layers:
   - Default
   - TransparentFX
@@ -11,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Collidable
   - 
   - 
   - 
