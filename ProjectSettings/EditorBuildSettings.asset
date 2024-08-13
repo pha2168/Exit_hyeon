@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/CJY/CJYScene.unity
+    guid: 2288dca501458cc44ae11a141bc50aef
+  - enabled: 1
+    path: Assets/CJY/Select.unity
+    guid: 73d312196f559164880c11c6abb54841
   m_configObjects: {}
