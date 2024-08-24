@@ -1,21 +1,18 @@
-
 using UnityEngine;
 
 public class Grid3D : MonoBehaviour
 {
-    public static int width = 10;   // 그리드의 너비 (x축)
-    public static int height = 20;  // 그리드의 높이 (y축)
-    public static int depth = 10;   // 그리드의 깊이 (z축)
+    public static int width = 10;
+    public static int height = 20;
+    public static int depth = 10;
 
     public static Transform[,,] grid = new Transform[width, height, depth];
 
-    // 벡터를 그리드의 좌표로 변환 (반올림)
     public static Vector3 Round(Vector3 pos)
     {
         return new Vector3(Mathf.Round(pos.x), Mathf.Round(pos.y), Mathf.Round(pos.z));
     }
 
-    // 그리드 내부에 있는지 확인
     public static bool InsideGrid(Vector3 pos)
     {
         return ((int)pos.x >= 0 && (int)pos.x < width &&
@@ -23,16 +20,14 @@ public class Grid3D : MonoBehaviour
                 (int)pos.z >= 0 && (int)pos.z < depth);
     }
 
-    // 특정 그리드 위치에 블록이 있는지 확인
     public static Transform GetTransformAtGridPosition(Vector3 pos)
     {
-        if (pos.y >= height) // 그리드를 넘어서는 위치에는 아무것도 없음
+        if (pos.y >= height)
             return null;
 
         return grid[(int)pos.x, (int)pos.y, (int)pos.z];
     }
 
-    // 그리드에 블록 추가
     public static void AddBlockToGrid(Transform block)
     {
         foreach (Transform child in block)
@@ -42,7 +37,6 @@ public class Grid3D : MonoBehaviour
         }
     }
 
-    // 라인이 가득 찼는지 확인
     public static bool IsLineFull(int y)
     {
         for (int x = 0; x < width; x++)
@@ -56,7 +50,6 @@ public class Grid3D : MonoBehaviour
         return true;
     }
 
-    // 라인 삭제
     public static void DeleteLine(int y)
     {
         for (int x = 0; x < width; x++)
@@ -69,7 +62,6 @@ public class Grid3D : MonoBehaviour
         }
     }
 
-    // 블록들을 아래로 이동
     public static void MoveAllBlocksDown(int y)
     {
         for (int i = y; i < height - 1; i++)
@@ -78,7 +70,6 @@ public class Grid3D : MonoBehaviour
         }
     }
 
-    // 특정 줄을 한 칸 아래로 이동
     public static void MoveLineDown(int y)
     {
         for (int x = 0; x < width; x++)
@@ -87,7 +78,6 @@ public class Grid3D : MonoBehaviour
             {
                 if (grid[x, y, z] != null)
                 {
-                    // 현재 블록을 아래로 이동
                     grid[x, y - 1, z] = grid[x, y, z];
                     grid[x, y, z] = null;
                     grid[x, y - 1, z].position += Vector3.down;
@@ -96,7 +86,6 @@ public class Grid3D : MonoBehaviour
         }
     }
 
-    // 가득 찬 라인을 찾아 삭제
     public static void DeleteFullLines()
     {
         for (int y = 0; y < height; y++)
@@ -105,7 +94,7 @@ public class Grid3D : MonoBehaviour
             {
                 DeleteLine(y);
                 MoveAllBlocksDown(y);
-                y--; // 라인 삭제 후 다시 체크
+                y--;
             }
         }
     }
