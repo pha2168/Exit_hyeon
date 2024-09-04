@@ -12,4 +12,5 @@ public class Data
     public bool[] isUnlock = new bool[5];
 
     //저장할 데이터들 값 넣기
+    //일차수는 인트 값으로 저장 일차에 따라 레벨 조정
 }
