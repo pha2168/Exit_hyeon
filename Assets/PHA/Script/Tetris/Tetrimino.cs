@@ -100,6 +100,11 @@ public class Tetrimino : MonoBehaviour
             HardDrop();
             inputReceived = true;
         }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            HardDrop();  // ºí·°À» ¹Ù·Î ¹Ù´ÚÀ¸·Î ¶³¾î¶ß¸²
+            inputReceived = true;
+        }
 
         if (inputReceived)
         {
