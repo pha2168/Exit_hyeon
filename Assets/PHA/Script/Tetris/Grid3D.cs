@@ -20,6 +20,7 @@ public class Grid3D : MonoBehaviour
                 (int)pos.z >= 0 && (int)pos.z < depth);
     }
 
+
     public static Transform GetTransformAtGridPosition(Vector3 pos)
     {
         if (pos.y >= height)
@@ -98,4 +99,6 @@ public class Grid3D : MonoBehaviour
             }
         }
     }
+
+
 }

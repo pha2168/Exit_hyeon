@@ -20,9 +20,16 @@ public class Tetrimino : MonoBehaviour
     private float previousYPosition;
     private bool isLocked = false;
 
+    // Tetrimino.cs
+
+    public GameObject shadowTetrimino;
+
     void Start()
     {
         CreateBlocks();
+        CreateShadow();
+        UpdateShadowPosition();
+
         previousTime = Time.time;
         lastMoveTime = Time.time;
         previousYPosition = transform.position.y;
@@ -37,6 +44,10 @@ public class Tetrimino : MonoBehaviour
 
         HandleInput();
 
+        // 블럭 이동 및 회전 후 그림자 위치 갱신
+        UpdateShadowPosition();
+
+        // 아래쪽으로 자동으로 떨어지는 동작 처리
         if (Time.time - previousTime >= fallTime)
         {
             Move(Vector3.down);
@@ -55,6 +66,62 @@ public class Tetrimino : MonoBehaviour
             previousTime = Time.time;
         }
     }
+
+
+    // Tetrimino.cs
+
+    public void CreateShadow()
+    {
+        if (shadowTetrimino == null)
+        {
+            shadowTetrimino = new GameObject("ShadowTetrimino");
+            foreach (Transform block in transform)
+            {
+                GameObject shadowBlock = Instantiate(block.gameObject, shadowTetrimino.transform);
+                shadowBlock.GetComponent<Renderer>().material.color = Color.gray; // 그림자 색상 설정
+                Destroy(shadowBlock.GetComponent<Collider>()); // 충돌 무시
+            }
+        }
+        shadowTetrimino.SetActive(true); // 새 블럭 활성화 시 그림자 활성화
+        UpdateShadowPosition();
+    }
+
+    public void DestroyShadow()
+    {
+        if (shadowTetrimino != null)
+        {
+            shadowTetrimino.SetActive(false); // 그림자를 삭제하지 않고 비활성화
+        }
+    }
+
+    public void UpdateShadowPosition()
+    {
+        if (shadowTetrimino == null) return;
+
+        shadowTetrimino.transform.position = transform.position;
+        shadowTetrimino.transform.rotation = transform.rotation;
+
+        while (IsValidShadowPosition())
+        {
+            shadowTetrimino.transform.position += Vector3.down;
+        }
+        shadowTetrimino.transform.position -= Vector3.down;
+    }
+
+    bool IsValidShadowPosition()
+    {
+        foreach (Transform shadowBlock in shadowTetrimino.transform)
+        {
+            Vector3 pos = Grid3D.Round(shadowBlock.position);
+            if (!Grid3D.InsideGrid(pos) || Grid3D.GetTransformAtGridPosition(pos) != null)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 
     void HandleInput()
     {
@@ -112,9 +179,31 @@ public class Tetrimino : MonoBehaviour
         }
     }
 
+    // Tetrimino.cs
+
+    public void MoveToValidPosition()
+    {
+        Vector3 adjustment = Vector3.zero;
+
+        foreach (Transform child in transform)
+        {
+            Vector3 pos = Grid3D.Round(child.position);
+
+            if (pos.x < 0) adjustment.x = Mathf.Max(adjustment.x, -pos.x);
+            if (pos.x >= Grid3D.width) adjustment.x = Mathf.Min(adjustment.x, Grid3D.width - 1 - pos.x);
+            if (pos.y < 0) adjustment.y = Mathf.Max(adjustment.y, -pos.y);
+            if (pos.y >= Grid3D.height) adjustment.y = Mathf.Min(adjustment.y, Grid3D.height - 1 - pos.y);
+            if (pos.z < 0) adjustment.z = Mathf.Max(adjustment.z, -pos.z);
+            if (pos.z >= Grid3D.depth) adjustment.z = Mathf.Min(adjustment.z, Grid3D.depth - 1 - pos.z);
+        }
+
+        transform.position += adjustment;
+    }
+
     void Move(Vector3 direction)
     {
         transform.position += direction;
+        MoveToValidPosition();
 
         if (!IsValidPosition())
         {
@@ -125,6 +214,7 @@ public class Tetrimino : MonoBehaviour
     void Rotate(Vector3 axis)
     {
         transform.Rotate(axis * 90);
+        MoveToValidPosition();
 
         if (!IsValidPosition())
         {
@@ -162,8 +252,11 @@ public class Tetrimino : MonoBehaviour
         GameManager.Instance.UpdateStatus(statusChange);
         Grid3D.DeleteFullLines();
         FindObjectOfType<GameManager>().OnBlockLanded();
+        DestroyShadow();  // 블럭이 고정되면 그림자 제거
         enabled = false;
     }
+
+
 
     void OnDestroy()
     {
@@ -173,8 +266,9 @@ public class Tetrimino : MonoBehaviour
         }
     }
 
-    void CreateBlocks()
+    public void CreateBlocks()
     {
+        // 각 블록의 위치에 큐브를 생성하여 모양을 구성
         foreach (Vector3 pos in blockPositions)
         {
             GameObject block = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -182,6 +276,7 @@ public class Tetrimino : MonoBehaviour
             block.transform.parent = this.transform;
         }
     }
+
 
     public void ApplyMaterial()
     {
