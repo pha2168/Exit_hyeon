@@ -12,6 +12,8 @@ TagManager:
   - 123123
   - BLOCKDOWNCHECK
   - BLOCK
+  - Clear
+  - "\uCE58\uB8CC\uC2DC\uC124"
   layers:
   - Default
   - TransparentFX
