@@ -268,6 +268,9 @@ public class Tetrimino : MonoBehaviour
 
     public void CreateBlocks()
     {
+        // 자식 블록이 이미 생성되어 있으면 추가 생성 방지
+        if (transform.childCount > 0) return;
+
         // 각 블록의 위치에 큐브를 생성하여 모양을 구성
         foreach (Vector3 pos in blockPositions)
         {
@@ -317,6 +320,15 @@ public class Tetrimino : MonoBehaviour
                     renderer.material = selectedMaterial;
                 }
             }
+        }
+    }
+
+    public void DestroyIfNoChildren()
+    {
+        // 자식이 하나도 없으면 자신을 삭제
+        if (transform.childCount == 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
