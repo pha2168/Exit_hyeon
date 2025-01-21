@@ -4,18 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - LEFTSITE
-  - RIGHTSITE
-  - FORWARDSITE
-  - BACKSITE
-  - DOWNSITE
-  - 123123
-  - BLOCKDOWNCHECK
-  - BLOCK
-  - Clear
-  - "\uCE58\uB8CC\uC2DC\uC124"
-  - "\uC4F0\uB808\uAE30\uC9D1"
-  - trash
+  - CleanHouse
+  - WeaponStore
+  - Crime
+  - Hospital
+  - TrashHouse
+  - Store
   layers:
   - Default
   - TransparentFX
