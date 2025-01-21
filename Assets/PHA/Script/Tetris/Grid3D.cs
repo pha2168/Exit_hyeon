@@ -57,8 +57,20 @@ public class Grid3D : MonoBehaviour
         {
             for (int z = 0; z < depth; z++)
             {
-                Destroy(grid[x, y, z].gameObject);
-                grid[x, y, z] = null;
+                Transform block = grid[x, y, z];
+                if (block != null)
+                {
+                    // 블록 개별 삭제
+                    Destroy(block.gameObject);
+                    grid[x, y, z] = null;
+
+                    // 부모 Tetrimino 확인 후 삭제 처리
+                    Tetrimino parentTetrimino = block.GetComponentInParent<Tetrimino>();
+                    if (parentTetrimino != null)
+                    {
+                        parentTetrimino.DestroyIfNoChildren();
+                    }
+                }
             }
         }
     }

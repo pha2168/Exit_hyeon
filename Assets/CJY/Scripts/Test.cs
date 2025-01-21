@@ -19,16 +19,21 @@ public class Test : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     // 오브젝트가 파괴될 때 자동으로 호출되는 함수
     void OnDestroy()
     {
-        // 오브젝트가 파괴될 때 QuestManager의 OnObjectDestroyed 호출
-        if (questManager != null)
+        // questManager가 null인지 확인하고 OnObjectDestroyed 호출
+        if (questManager != null && gameObject != null)
         {
-            questManager.OnObjectDestroyed(gameObject);  // 현재 오브젝트를 전달
+            // 현재 오브젝트를 전달
+            questManager.OnObjectDestroyed(gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("OnDestroy 호출 시 QuestManager가 null이거나 객체가 존재하지 않습니다.");
         }
     }
 }
