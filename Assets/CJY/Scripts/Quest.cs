@@ -16,8 +16,9 @@ public class Quest
     public bool isCompleted;   // 퀘스트 완료 여부
     public int currentCount;   // 현재 파괴된 오브젝트 수
     public QuestType questType; // 퀘스트 타입 (파괴 또는 카운트)
+    public int questOrder; // 퀘스트 순서
 
-    public Quest(string title, string tag, int requiredCount, QuestType questType)
+    public Quest(string title, string tag, int requiredCount, QuestType questType, int questOrder)
     {
         this.title = title;
         this.tag = tag;
@@ -25,6 +26,7 @@ public class Quest
         this.isCompleted = false;
         this.currentCount = 0;
         this.questType = questType;
+        this.questOrder = questOrder;
     }
 
     // 파괴 퀘스트의 카운트를 증가시키고 퀘스트 완료 여부 확인
