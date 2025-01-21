@@ -14,6 +14,8 @@ TagManager:
   - BLOCK
   - Clear
   - "\uCE58\uB8CC\uC2DC\uC124"
+  - "\uC4F0\uB808\uAE30\uC9D1"
+  - trash
   layers:
   - Default
   - TransparentFX
