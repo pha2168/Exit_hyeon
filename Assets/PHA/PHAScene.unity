@@ -21249,6 +21249,9 @@ MonoBehaviour:
   statusASlider: {fileID: 1098926371}
   statusBSlider: {fileID: 1090737994}
   statusCSlider: {fileID: 2020875250}
+  status1Slider: {fileID: 0}
+  status2Slider: {fileID: 0}
+  status3Slider: {fileID: 0}
   statusA: 0
   statusB: 0
   statusC: 0
