@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    private QuestManager questManager;  // QuestManager 인스턴스에 대한 참조
+    private QuestManager questManager; // QuestManager 인스턴스에 대한 참조
 
     void Start()
     {
@@ -13,23 +13,18 @@ public class Test : MonoBehaviour
 
         if (questManager == null)
         {
-            Debug.LogError("QuestManager를 씬에서 찾을 수 없습니다.");  // QuestManager가 없을 경우 에러 로그 출력
+            Debug.LogError("QuestManager를 씬에서 찾을 수 없습니다."); // QuestManager가 없을 경우 에러 로그 출력
         }
-    }
-
-    void Update()
-    {
-
     }
 
     // 오브젝트가 파괴될 때 자동으로 호출되는 함수
     void OnDestroy()
     {
-        // questManager가 null인지 확인하고 OnObjectDestroyed 호출
+        // QuestManager가 null인지 확인하고 OnObjectDestroyed 호출
         if (questManager != null && gameObject != null)
         {
-            // 현재 오브젝트를 전달
-            questManager.OnObjectDestroyed(gameObject);
+            // 현재 오브젝트의 태그를 전달하여 퀘스트 진행
+            questManager.OnObjectDestroyed(gameObject.tag);
         }
         else
         {

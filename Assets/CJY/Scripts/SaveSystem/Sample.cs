@@ -7,6 +7,8 @@ public class Sample : MonoBehaviour
     void Start()
     {
         Datamanager.Instance.LoadGameData();
+
+        Debug.Log("게임 데이터 파일 경로: " + Application.persistentDataPath);
     }
 
     void Update()
