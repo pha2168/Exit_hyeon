@@ -90,7 +90,8 @@ public class Tetrimino : MonoBehaviour
     {
         if (shadowTetrimino != null)
         {
-            shadowTetrimino.SetActive(false); // 그림자를 삭제하지 않고 비활성화
+            //shadowTetrimino.SetActive(false); // 그림자를 삭제하지 않고 비활성화
+            Destroy(shadowTetrimino);
         }
     }
 
@@ -280,87 +281,43 @@ public class Tetrimino : MonoBehaviour
         }
     }
 
-    public void ApplyMaterial()
-    {
-        Material selectedMaterial = null;
-        string selectedTag = null;
-
-        if (statusChange.statusChangeA > 0)
-        {
-            selectedMaterial = statusAIncreaseMaterial;
-            selectedTag = "TAG_A";
-        }
-        else if (statusChange.statusChangeA < 0)
-        {
-            selectedMaterial = statusADecreaseMaterial;
-            selectedTag = "TAG_B";
-        }
-        else if (statusChange.statusChangeB > 0)
-        {
-            selectedMaterial = statusBIncreaseMaterial;
-            selectedTag = "TAG_C";
-        }
-        else if (statusChange.statusChangeB < 0)
-        {
-            selectedMaterial = statusBDecreaseMaterial;
-            selectedTag = "TAG_D";
-        }
-        else if (statusChange.statusChangeC > 0)
-        {
-            selectedMaterial = statusCIncreaseMaterial;
-            selectedTag = "TAG_E";
-        }
-        else if (statusChange.statusChangeC < 0)
-        {
-            selectedMaterial = statusCDecreaseMaterial;
-            selectedTag = "TAG_F";
-        }
-
-        if (selectedMaterial != null && selectedTag != null)
-        {
-            foreach (Transform child in transform)
-            {
-                Renderer renderer = child.GetComponent<Renderer>();
-                if (renderer != null)
-                {
-                    renderer.material = selectedMaterial;
-                }
-
-                // 태그 설정
-                child.gameObject.tag = selectedTag;
-            }
-        }
-    }
     //public void ApplyMaterial()
     //{
     //    Material selectedMaterial = null;
+    //    string selectedTag = null;
 
     //    if (statusChange.statusChangeA > 0)
     //    {
     //        selectedMaterial = statusAIncreaseMaterial;
+    //        selectedTag = "TAG_A";
     //    }
     //    else if (statusChange.statusChangeA < 0)
     //    {
     //        selectedMaterial = statusADecreaseMaterial;
+    //        selectedTag = "TAG_B";
     //    }
     //    else if (statusChange.statusChangeB > 0)
     //    {
     //        selectedMaterial = statusBIncreaseMaterial;
+    //        selectedTag = "TAG_C";
     //    }
     //    else if (statusChange.statusChangeB < 0)
     //    {
     //        selectedMaterial = statusBDecreaseMaterial;
+    //        selectedTag = "TAG_D";
     //    }
     //    else if (statusChange.statusChangeC > 0)
     //    {
     //        selectedMaterial = statusCIncreaseMaterial;
+    //        selectedTag = "TAG_E";
     //    }
     //    else if (statusChange.statusChangeC < 0)
     //    {
     //        selectedMaterial = statusCDecreaseMaterial;
+    //        selectedTag = "TAG_F";
     //    }
 
-    //    if (selectedMaterial != null)
+    //    if (selectedMaterial != null && selectedTag != null)
     //    {
     //        foreach (Transform child in transform)
     //        {
@@ -369,9 +326,55 @@ public class Tetrimino : MonoBehaviour
     //            {
     //                renderer.material = selectedMaterial;
     //            }
+
+    //            // 태그 설정
+    //            child.gameObject.tag = selectedTag;
     //        }
     //    }
     //}
+
+
+    public void ApplyMaterial()
+    {
+        Material selectedMaterial = null;
+
+        if (statusChange.statusChangeA > 0)
+        {
+            selectedMaterial = statusAIncreaseMaterial;
+        }
+        else if (statusChange.statusChangeA < 0)
+        {
+            selectedMaterial = statusADecreaseMaterial;
+        }
+        else if (statusChange.statusChangeB > 0)
+        {
+            selectedMaterial = statusBIncreaseMaterial;
+        }
+        else if (statusChange.statusChangeB < 0)
+        {
+            selectedMaterial = statusBDecreaseMaterial;
+        }
+        else if (statusChange.statusChangeC > 0)
+        {
+            selectedMaterial = statusCIncreaseMaterial;
+        }
+        else if (statusChange.statusChangeC < 0)
+        {
+            selectedMaterial = statusCDecreaseMaterial;
+        }
+
+        if (selectedMaterial != null)
+        {
+            foreach (Transform child in transform)
+            {
+                Renderer renderer = child.GetComponent<Renderer>();
+                if (renderer != null)
+                {
+                    renderer.material = selectedMaterial;
+                }
+            }
+        }
+    }
 
     public void DestroyIfNoChildren()
     {

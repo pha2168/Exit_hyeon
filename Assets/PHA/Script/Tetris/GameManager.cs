@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour
     public Slider statusBSlider;
     public Slider statusCSlider;
 
-    public Slider status1Slider;
-    public Slider status2Slider;
-    public Slider status3Slider;
+    //public Slider status1Slider;
+    //public Slider status2Slider;
+    //public Slider status3Slider;
 
     public int statusA;
     public int statusB;
@@ -54,11 +54,11 @@ public class GameManager : MonoBehaviour
             SwapWithNextBlock();  // C키 입력 시 블록 교체
         }
 
-        // TriggerGameOver 호출 조건
-        if (status1Slider.value <= 45 || status2Slider.value <= 45 || status3Slider.value <= 45)
-        {
-            TriggerGameOver();
-        }
+        //// TriggerGameOver 호출 조건
+        //if (status1Slider.value <= 45 || status2Slider.value <= 45 || status3Slider.value <= 45)
+        //{
+        //    TriggerGameOver();
+        //}
     }
 
     public void TriggerGameOver()
@@ -66,10 +66,6 @@ public class GameManager : MonoBehaviour
         isGameOver = true;
         gameOverUI.SetActive(true);
     }
-
-    // GameManager.cs
-
-    // GameManager.cs
 
     public void SpawnTetrimino()
     {
