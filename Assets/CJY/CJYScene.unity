@@ -2300,6 +2300,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe1439526523bd4da01bd3e8bcc26cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questScripts:
+  - {fileID: 11400000, guid: 232a3c60d8bfa934b974996515942577, type: 2}
+  - {fileID: 11400000, guid: 5fa92c913991f514b99325fb25f2b0ba, type: 2}
+  - {fileID: 11400000, guid: 1cf362ca9225f69498078aef2ceed1b1, type: 2}
+  - {fileID: 11400000, guid: cb2d9c2e5ff4bff498480c5320771f43, type: 2}
+  - {fileID: 11400000, guid: f033522e9970e664ebb8e12977dddc1a, type: 2}
+  - {fileID: 11400000, guid: c4c88479b835e3644be463f1493496c5, type: 2}
+  - {fileID: 11400000, guid: 5525d9964db123649b4e46aa555c504c, type: 2}
   questText1: {fileID: 1680316395}
   questText2: {fileID: 59335931}
   questText3: {fileID: 1549944146}
@@ -2348,8 +2356,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectCountText: {fileID: 2057387310}
   tagsToTrack:
-  - "\uCE58\uB8CC\uC2DC\uC124"
-  - "\uC4F0\uB808\uAE30\uC9D1"
+  - Hospital
+  - Crime
 --- !u!1 &1453316097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,6 +2805,124 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &1781694111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1781694115}
+  - component: {fileID: 1781694114}
+  - component: {fileID: 1781694113}
+  - component: {fileID: 1781694112}
+  - component: {fileID: 1781694116}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Crime
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1781694112
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781694111}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1781694113
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781694111}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1781694114
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781694111}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1781694115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781694111}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1781694116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781694111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dcc8e2790b90243a1aa256db495919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1801404341
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,3 +3258,4 @@ SceneRoots:
   - {fileID: 1529001348}
   - {fileID: 272645547}
   - {fileID: 1451881461}
+  - {fileID: 1781694115}
