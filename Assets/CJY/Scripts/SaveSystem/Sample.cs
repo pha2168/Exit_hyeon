@@ -9,6 +9,8 @@ public class Sample : MonoBehaviour
         Datamanager.Instance.LoadGameData();
 
         Debug.Log("게임 데이터 파일 경로: " + Application.persistentDataPath);
+
+
     }
 
     void Update()
@@ -22,10 +24,19 @@ public class Sample : MonoBehaviour
         Datamanager.Instance.SaveGameData();
     }
 
-    public void ChapterUnlock(int chapterNum)
+
+    public void ClearDayGame()
     {
-        //챕터 잠금해제
-        Datamanager.Instance.data.isUnlock[chapterNum] = true;
+        if (Datamanager.Instance.data.NowDay < 3)
+            Datamanager.Instance.data.NowDay += 1;
+
+        Datamanager.Instance.SaveGameData();
+    }
+
+    public void BackDayGame()
+    {
+        if (Datamanager.Instance.data.NowDay > 0)
+            Datamanager.Instance.data.NowDay -= 1;
 
         Datamanager.Instance.SaveGameData();
     }
