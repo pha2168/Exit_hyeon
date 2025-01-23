@@ -7,13 +7,11 @@ using UnityEngine;
 
 public class Data
 {
-    // 예시
-    // 각 챕터의 잠금여부를 저장할 배열
-
-    public bool[] isUnlock = new bool[5];
-
     public int  NowDay;
 
+    // 새로 추가된 데이터: 볼륨 조절값 (0.0f ~ 1.0f)
+    public float BGMVolume = 1.0f; // 배경음 볼륨
+    public float SFXVolume = 1.0f; // 효과음 볼륨
+
     //저장할 데이터들 값 넣기
-    //일차수는 인트 값으로 저장 일차에 따라 레벨 조정
 }
