@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player_InputManager : MonoBehaviour
 {
     public static Player_InputManager Instance { get; private set; }
-    public Tetris_Tetrimino tetriminoObjects;
+    private Tetris_Tetrimino tetriminoObjects;
+    public Manager_Tetris tetrisManager;
 
     void Awake()
     {
@@ -23,14 +24,14 @@ public class Player_InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // GameManager에서 소환될 때 이동시킬 테트리미노 블럭을 전달
-        // TetriminoLock 될 때 다음 블럭으로 전달
+        tetriminoObjects = tetrisManager.currentTetrimino;
     }
 
     // Update is called once per frame
     void Update()
     {
         bool inputReceived = false;
+        tetriminoObjects = tetrisManager.currentTetrimino;
 
         if (Input.GetKeyDown(KeyCode.UpArrow)) 
         {
@@ -74,7 +75,7 @@ public class Player_InputManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            //다음 블럭과 교체 로직
+            tetrisManager.SwapWithNextBlock();
         }
 
         if (inputReceived)

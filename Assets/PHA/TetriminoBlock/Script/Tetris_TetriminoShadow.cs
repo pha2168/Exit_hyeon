@@ -52,12 +52,19 @@ public class Tetris_TetriminoShadow : MonoBehaviour
         shadowTetrimino.transform.position = transform.position;
         shadowTetrimino.transform.rotation = transform.rotation;
 
-        while (IsValidShadowPosition())
+        int maxDropDepth = Grid3D.height; // 최대 떨어질 거리 설정
+        int dropCount = 0;
+
+        while (IsValidShadowPosition() && dropCount < maxDropDepth)
         {
             shadowTetrimino.transform.position += Vector3.down;
+            dropCount++;
         }
+
+        // 한 칸 위로 보정 (마지막 이동이 유효하지 않았을 경우)
         shadowTetrimino.transform.position -= Vector3.down;
     }
+
 
     bool IsValidShadowPosition()
     {
