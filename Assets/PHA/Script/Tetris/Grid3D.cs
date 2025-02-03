@@ -112,5 +112,20 @@ public class Grid3D : MonoBehaviour
         }
     }
 
+    public static int GridHeightLine()
+    {
+        int HightLine = 0;
+        
+        foreach (Transform H_grid in grid)
+        {
+            if(H_grid != null)
+            {
+                if (H_grid.position.y >= HightLine)
+                    HightLine = (int)H_grid.position.y;
+            }
+        }
+        return HightLine;
+    }
+
 
 }
