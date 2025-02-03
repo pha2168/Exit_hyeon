@@ -10,7 +10,6 @@ public class Sample : MonoBehaviour
 
         Debug.Log("게임 데이터 파일 경로: " + Application.persistentDataPath);
 
-
     }
 
     void Update()
