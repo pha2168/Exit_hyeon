@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 3957208862177212812}
   - component: {fileID: 796939295706921360}
   - component: {fileID: 5476466550744306842}
-  - component: {fileID: 771132479387484790}
+  - component: {fileID: 1813877357618607443}
+  - component: {fileID: 4725681989419523307}
+  - component: {fileID: 949644734154404082}
   m_Layer: 0
   m_Name: TetriminoBlock
   m_TagString: Untagged
@@ -106,7 +108,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &771132479387484790
+--- !u!114 &1813877357618607443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,14 +117,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 2204556678566146805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 940c41e66c93eca43993a3b46001a3ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 2299154d3f0adc041a7fa4e6d5286005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallTime: 1
+  lockDelay: 1
+--- !u!114 &4725681989419523307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204556678566146805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41df4db0e77092d43a38588a6276fc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blockPositions: []
-  statusAIncreaseMaterial: {fileID: 2100000, guid: 81d1c3e746e3e0b4289380b2f9a00f66, type: 2}
-  statusADecreaseMaterial: {fileID: 2100000, guid: 1a91cb19c826c3849869e182f6d0225a, type: 2}
-  statusBIncreaseMaterial: {fileID: 2100000, guid: db33e8a9dfa7bc04a81b09345fd84f63, type: 2}
-  statusBDecreaseMaterial: {fileID: 2100000, guid: f6349a3e428aca84d92bbdd0d35a588e, type: 2}
-  statusCIncreaseMaterial: {fileID: 2100000, guid: 8358e4437ff587049bcb9dfe58a30d1c, type: 2}
-  statusCDecreaseMaterial: {fileID: 2100000, guid: b2ea56495770f2648957fa833870c0b3, type: 2}
+  StoreBlock: {fileID: 6088501101996512988, guid: 46ebcdb057e444346b3b882856176fda, type: 3}
+  HospitalBlock: {fileID: 3619452935885705395, guid: 901efbd24ced69e4cb9d0e8bc8df02cb, type: 3}
+  CrimeBlock: {fileID: 5439095105511395563, guid: 965c1bde54e265547ada75dd408e394e, type: 3}
+  CleanHouseBlock: {fileID: 5173912507214629288, guid: e434814965747174789b501f6934bed1, type: 3}
+  TrashHouseBlock: {fileID: 1009699123513747440, guid: e0836fae7b3477549a8bd6514b7ea7a3, type: 3}
+  WeaponStoreBlock: {fileID: 5456490084984505652, guid: 54ae517f68622054abe4abda28eb9baf, type: 3}
+  lastMoveTime: 0
+--- !u!114 &949644734154404082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204556678566146805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4de70b3ae1efba49802ac78962c54a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   shadowTetrimino: {fileID: 0}

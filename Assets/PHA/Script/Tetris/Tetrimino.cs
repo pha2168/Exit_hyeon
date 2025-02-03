@@ -250,7 +250,7 @@ public class Tetrimino : MonoBehaviour
     {
         isLocked = true;
         Grid3D.AddBlockToGrid(transform);
-        GameManager.Instance.UpdateStatus(statusChange);
+        //GameManager.Instance.UpdateStatus(statusChange);
         Grid3D.DeleteFullLines();
         FindObjectOfType<GameManager>().OnBlockLanded();
         DestroyShadow();  // 블럭이 고정되면 그림자 제거
@@ -263,7 +263,7 @@ public class Tetrimino : MonoBehaviour
     {
         if (isLocked)
         {
-            GameManager.Instance.UpdateStatus(statusChange.Inverse());
+            //GameManager.Instance.UpdateStatus(statusChange.Inverse());
         }
     }
 
