@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class Tetris_TetriminoPos : MonoBehaviour
@@ -25,12 +26,19 @@ public class Tetris_TetriminoPos : MonoBehaviour
         previousTime = Time.time;
         lastMoveTime = Time.time;
         previousYPosition = transform.position.y;
+
+        tetrinimo = GetComponent<Tetris_Tetrimino>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void setBlockPos(Vector3[] pos)
+    {
+        blockPositions = pos;
     }
 
     public void CreateBlocks()

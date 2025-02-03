@@ -30,7 +30,6 @@ public class Manager_Tetris : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         nextTetrimino = SpawnNextTetrimino();
@@ -118,16 +117,23 @@ public class Manager_Tetris : MonoBehaviour
     Vector3[] GetRandomShape()
     {
         int shapeIndex = UnityEngine.Random.Range(0, 7);
+        Vector3[] selectedShape;
+
         switch (shapeIndex)
         {
-            case 0: return Tetris_TetriminoShapes.IShape;
-            case 1: return Tetris_TetriminoShapes.OShape;
-            case 2: return Tetris_TetriminoShapes.TShape;
-            case 3: return Tetris_TetriminoShapes.LShape;
-            case 4: return Tetris_TetriminoShapes.JShape;
-            case 5: return Tetris_TetriminoShapes.SShape;
-            case 6: return Tetris_TetriminoShapes.ZShape;
-            default: return Tetris_TetriminoShapes.IShape;
+            case 0: selectedShape = Tetris_TetriminoShapes.IShape; break;
+            case 1: selectedShape = Tetris_TetriminoShapes.OShape; break;
+            case 2: selectedShape = Tetris_TetriminoShapes.TShape; break;
+            case 3: selectedShape = Tetris_TetriminoShapes.LShape; break;
+            case 4: selectedShape = Tetris_TetriminoShapes.JShape; break;
+            case 5: selectedShape = Tetris_TetriminoShapes.SShape; break;
+            case 6: selectedShape = Tetris_TetriminoShapes.ZShape; break;
+            default: selectedShape = Tetris_TetriminoShapes.IShape; break;
         }
+
+        //Debug.Log($"Shape Index: {shapeIndex}, Shape: {string.Join(", ", selectedShape)}");
+
+        return selectedShape;
     }
+
 }

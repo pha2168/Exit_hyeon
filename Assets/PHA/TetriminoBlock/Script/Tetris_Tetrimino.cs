@@ -91,7 +91,7 @@ public class Tetris_Tetrimino : MonoBehaviour
 
     public void setBlockPos(Vector3[] pos)
     {
-        tetrimino_pos.blockPositions = pos;
+        tetrimino_pos.setBlockPos(pos);
     }
 
     public void createBlock()

@@ -9,23 +9,23 @@ public class GameManager : MonoBehaviour
     public GameObject nextTetriminoPrefab;  // NextBlock 미리보기를 위한 프리팹
     public Transform nextBlockDisplayPosition;  // NextBlock UI 위치
 
-    //public Slider statusASlider;
-    //public Slider statusBSlider;
-    //public Slider statusCSlider;
+    public Slider statusASlider;
+    public Slider statusBSlider;
+    public Slider statusCSlider;
 
-    ////public Slider status1Slider;
-    ////public Slider status2Slider;
-    ////public Slider status3Slider;
+    //public Slider status1Slider;
+    //public Slider status2Slider;
+    //public Slider status3Slider;
 
-    //public int statusA;
-    //public int statusB;
-    //public int statusC;
+    public int statusA;
+    public int statusB;
+    public int statusC;
 
     public GameObject gameOverUI;
 
     private bool isGameOver = false;
-    private Tetris_Tetrimino currentTetrimino;  // 현재 블록
-    private Tetris_Tetrimino nextTetrimino;     // 다음 블록
+    private Tetrimino currentTetrimino;  // 현재 블록
+    private Tetrimino nextTetrimino;     // 다음 블록
 
     void Awake()
     {
@@ -84,14 +84,14 @@ public class GameManager : MonoBehaviour
         currentTetrimino.enabled = true;
 
         // 새로 소환된 블럭에 대한 새로운 그림자 생성
-        //currentTetrimino.CreateShadow();
-        //currentTetrimino.UpdateShadowPosition();
+        currentTetrimino.CreateShadow();
+        currentTetrimino.UpdateShadowPosition();
 
         nextTetrimino = SpawnNextTetrimino();
     }
 
 
-    private bool IsPositionOccupied(Vector3 position, Tetris_Tetrimino tetrimino)
+    private bool IsPositionOccupied(Vector3 position, Tetrimino tetrimino)
     {
         // tetrimino가 null이 아닐 경우에만 자식 위치를 확인
         if (tetrimino == null) return false;
@@ -108,22 +108,22 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public Tetris_Tetrimino SpawnNextTetrimino()
+    public Tetrimino SpawnNextTetrimino()
     {
         // NextBlock 위치에 생성
         Vector3 spawnPosition = nextBlockDisplayPosition.position;
         GameObject nextTetriminoObject = Instantiate(tetriminoPrefab, spawnPosition, Quaternion.identity);
-        Tetris_Tetrimino tetriminoComponent = nextTetriminoObject.GetComponent<Tetris_Tetrimino>();
+        Tetrimino tetriminoComponent = nextTetriminoObject.GetComponent<Tetrimino>();
 
         // 블럭 모양을 무작위로 선택
         Vector3[] shape = GetRandomShape(out StatusChange statusChange);
-        tetriminoComponent.setBlockPos(shape);
-        //tetriminoComponent.statusChange = statusChange;
+        tetriminoComponent.blockPositions = shape;
+        tetriminoComponent.statusChange = statusChange;
 
         // 블록을 구성하는 CreateBlocks() 호출하여 모양을 그리기
-        tetriminoComponent.createBlock();
+        tetriminoComponent.CreateBlocks();
 
-        //tetriminoComponent.ApplyMaterial();  // 추가된 부분: 머터리얼을 적용
+        tetriminoComponent.ApplyMaterial();  // 추가된 부분: 머터리얼을 적용
 
         // NextBlock은 움직이지 않도록 비활성화
         tetriminoComponent.enabled = false;
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentTetrimino == null || nextTetrimino == null) return;
 
-        //currentTetrimino.DestroyShadow(); // 현재 블럭의 그림자 비활성화
+        currentTetrimino.DestroyShadow(); // 현재 블럭의 그림자 비활성화
 
         Vector3 currentPosition = currentTetrimino.transform.position;
         Vector3 nextBlockPosition = nextBlockDisplayPosition.position;
@@ -145,21 +145,21 @@ public class GameManager : MonoBehaviour
         currentTetrimino.transform.position = nextBlockPosition;
         nextTetrimino.transform.position = currentPosition;
 
-        Tetris_Tetrimino temp = currentTetrimino;
+        Tetrimino temp = currentTetrimino;
         currentTetrimino = nextTetrimino;
         nextTetrimino = temp;
 
         // 새로운 currentTetrimino에 대해 그림자 재생성/활성화
-        //if (currentTetrimino.shadowTetrimino == null)
-        //{
-        //    currentTetrimino.CreateShadow();
-        //}
-        //else
-        //{
-        //    currentTetrimino.shadowTetrimino.SetActive(true);
-        //}
+        if (currentTetrimino.shadowTetrimino == null)
+        {
+            currentTetrimino.CreateShadow();
+        }
+        else
+        {
+            currentTetrimino.shadowTetrimino.SetActive(true);
+        }
 
-        //currentTetrimino.UpdateShadowPosition();
+        currentTetrimino.UpdateShadowPosition();
         currentTetrimino.enabled = true;
         nextTetrimino.enabled = false;
     }
@@ -187,30 +187,30 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //public void UpdateStatus(StatusChange statusChange)
-    //{
-    //    // 스테이터스 변경 로직
-    //    statusA += statusChange.statusChangeA;
-    //    statusB += statusChange.statusChangeB;
-    //    statusC += statusChange.statusChangeC;
+    public void UpdateStatus(StatusChange statusChange)
+    {
+        // 스테이터스 변경 로직
+        statusA += statusChange.statusChangeA;
+        statusB += statusChange.statusChangeB;
+        statusC += statusChange.statusChangeC;
 
-    //    // UI 슬라이더 업데이트
-    //    UpdateStatusUI();
-    //}
+        // UI 슬라이더 업데이트
+        UpdateStatusUI();
+    }
 
-    //void UpdateStatusUI()
-    //{
-    //    if (statusASlider != null)
-    //    {
-    //        statusASlider.value = statusA;
-    //    }
-    //    if (statusBSlider != null)
-    //    {
-    //        statusBSlider.value = statusB;
-    //    }
-    //    if (statusCSlider != null)
-    //    {
-    //        statusCSlider.value = statusC;
-    //    }
-    //}
+    void UpdateStatusUI()
+    {
+        if (statusASlider != null)
+        {
+            statusASlider.value = statusA;
+        }
+        if (statusBSlider != null)
+        {
+            statusBSlider.value = statusB;
+        }
+        if (statusCSlider != null)
+        {
+            statusCSlider.value = statusC;
+        }
+    }
 }
