@@ -7,11 +7,12 @@ using UnityEngine;
 
 public class Data
 {
-    public int  NowDay;
+    public int  NowDay; //현재 일차
 
-    // 새로 추가된 데이터: 볼륨 조절값 (0.0f ~ 1.0f)
-    public float BGMVolume = 1.0f; // 배경음 볼륨
-    public float SFXVolume = 1.0f; // 효과음 볼륨
+    public int PublicAuthority_Step; //공권력 퀘스트 단계
+    public int RevolutionaryArmy_Step; // 혁명군 퀘스트 단계
+    public int Cult_Step; //사이비 퀘스트 단계
+    public int CrimeSyndicate_Step; //범죄 퀘스트 단계
 
     //저장할 데이터들 값 넣기
 }

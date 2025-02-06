@@ -3202,6 +3202,7 @@ GameObject:
   - component: {fileID: 1451881460}
   - component: {fileID: 1451881462}
   - component: {fileID: 1451881463}
+  - component: {fileID: 1451881464}
   m_Layer: 0
   m_Name: QuestManager
   m_TagString: Untagged
@@ -3222,7 +3223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questScripts:
-  - {fileID: 11400000, guid: 232a3c60d8bfa934b974996515942577, type: 2}
   - {fileID: 11400000, guid: 5fa92c913991f514b99325fb25f2b0ba, type: 2}
   - {fileID: 11400000, guid: 1cf362ca9225f69498078aef2ceed1b1, type: 2}
   - {fileID: 11400000, guid: cb2d9c2e5ff4bff498480c5320771f43, type: 2}
@@ -3277,6 +3277,42 @@ MonoBehaviour:
   tagsToTrack:
   - Hospital
   - Crime
+--- !u!114 &1451881464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451881459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307ce5ad97b43b7489a653e286d12d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests:
+  - {fileID: 11400000, guid: bc87607219365f74a8060e842c58da71, type: 2}
+  - {fileID: 11400000, guid: ced74ed143c26d943ae44a9f34595bc0, type: 2}
+  - {fileID: 11400000, guid: d1047004cd68a9b40bb75206ecb39870, type: 2}
+  - {fileID: 11400000, guid: 50a3090e60ed6544796aa1749880b218, type: 2}
+  - {fileID: 11400000, guid: f802458b77f6d4c4c87dd97b75ed74be, type: 2}
+  - {fileID: 11400000, guid: 8257bab4b62d3154f8231522134ee6e2, type: 2}
+  - {fileID: 11400000, guid: df4518c09074e8e4ca2edd0e52458de6, type: 2}
+  - {fileID: 11400000, guid: 31b31c2cce12c484f998f101e250267f, type: 2}
+  - {fileID: 11400000, guid: 6ff9f59cf41b2624aa1e99a3b5f87428, type: 2}
+  - {fileID: 11400000, guid: 22a45f98737a63142a1f79eefdbe9302, type: 2}
+  - {fileID: 11400000, guid: edee6bba1cc4213499b962fdaa90d596, type: 2}
+  - {fileID: 11400000, guid: 173b0bb0d3312e64fa677553cd2fec9b, type: 2}
+  gameData:
+    NowDay: 0
+    PublicAuthority_Step: 0
+    RevolutionaryArmy_Step: 0
+    Cult_Step: 0
+    CrimeSyndicate_Step: 0
+  datamanager: {fileID: 0}
+  questText1: {fileID: 0}
+  questText2: {fileID: 0}
+  questText1_1: {fileID: 0}
+  questText2_1: {fileID: 0}
 --- !u!1 &1453316097
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,7 +3596,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3938,7 +3974,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1781694111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7dcc8e2790b90243a1aa256db495919, type: 3}
+  m_Script: {fileID: 11500000, guid: be558c5c4ec49c24f9b54d58392bb2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1801404341
