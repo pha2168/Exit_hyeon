@@ -53,7 +53,7 @@ public class EndingQuest : MonoBehaviour
         }
 
         currentActiveQuest = questId; // 활성화된 퀘스트 설정
-        Debug.Log($"퀘스트 {questId}가 활성화되었습니다!");
+        //Debug.Log($"퀘스트 {questId}가 활성화되었습니다!");
         UpdateUI();
     }
 
@@ -61,13 +61,13 @@ public class EndingQuest : MonoBehaviour
     {
         if (!questStatus.ContainsKey(questId))
         {
-            Debug.LogWarning($"퀘스트 {questId}는 존재하지 않습니다.");
+            //Debug.LogWarning($"퀘스트 {questId}는 존재하지 않습니다.");
             return;
         }
 
         if (currentActiveQuest != questId)
         {
-            Debug.LogWarning($"현재 활성화된 퀘스트가 아닙니다: {questId}");
+            //Debug.LogWarning($"현재 활성화된 퀘스트가 아닙니다: {questId}");
             return;
         }
 
@@ -90,7 +90,7 @@ public class EndingQuest : MonoBehaviour
                 ActivateQuest("1-3");
                 break;
             case "1-3":
-                Debug.Log("엔딩 1 퀘스트 완료!");
+                //Debug.Log("엔딩 1 퀘스트 완료!");
                 currentActiveQuest = ""; // 퀘스트 종료
                 break;
             case "2-1":
@@ -100,7 +100,7 @@ public class EndingQuest : MonoBehaviour
                 ActivateQuest("2-3");
                 break;
             case "2-3":
-                Debug.Log("엔딩 2 퀘스트 완료!");
+                //Debug.Log("엔딩 2 퀘스트 완료!");
                 currentActiveQuest = ""; // 퀘스트 종료
                 break;
         }
