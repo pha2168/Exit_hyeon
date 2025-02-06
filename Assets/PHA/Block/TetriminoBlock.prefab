@@ -122,6 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallTime: 1
   lockDelay: 1
+  tetrimino_pos: {fileID: 4725681989419523307}
+  tetrimino_sha: {fileID: 949644734154404082}
 --- !u!114 &4725681989419523307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +144,7 @@ MonoBehaviour:
   TrashHouseBlock: {fileID: 1009699123513747440, guid: e0836fae7b3477549a8bd6514b7ea7a3, type: 3}
   WeaponStoreBlock: {fileID: 5456490084984505652, guid: 54ae517f68622054abe4abda28eb9baf, type: 3}
   lastMoveTime: 0
+  tetrinimo: {fileID: 1813877357618607443}
 --- !u!114 &949644734154404082
 MonoBehaviour:
   m_ObjectHideFlags: 0
