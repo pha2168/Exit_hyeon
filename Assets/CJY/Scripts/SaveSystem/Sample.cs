@@ -14,7 +14,7 @@ public class Sample : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
     //게임을 종료하면 자동저장
