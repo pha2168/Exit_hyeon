@@ -49,6 +49,21 @@ public class Datamanager : MonoBehaviour
             print("불러오기 완료");
 
         }
+        else
+        {
+            // 저장된 데이터가 없으면 기본값 설정
+            data = new Data
+            {
+                NowDay = 1,
+                PublicAuthority_Step = 1,
+                RevolutionaryArmy_Step = 1,
+                Cult_Step = 1,
+                CrimeSyndicate_Step = 1
+            };
+
+            SaveGameData(); // 기본값을 저장하여 이후 실행 시 유지
+            print("기본값 설정 완료");
+        }
     }
 
 
@@ -65,6 +80,6 @@ public class Datamanager : MonoBehaviour
         // 올바르게 저장됐는지 확인 (자유롭게 변형)
         print("저장 완료");
 
-        print($"{data.NowDay}일차");
+        print($"{data.NowDay}일차"); 
     }
 }
