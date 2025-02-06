@@ -26,16 +26,22 @@ public class Tetris_TetriminoShadow : MonoBehaviour
         if (shadowTetrimino == null)
         {
             shadowTetrimino = new GameObject("ShadowTetrimino");
+            shadowTetrimino.transform.SetParent(transform.parent);
+
             foreach (Transform block in transform)
             {
-                GameObject shadowBlock = Instantiate(block.gameObject, shadowTetrimino.transform);
-                shadowBlock.GetComponent<Renderer>().material.color = Color.gray;
+                GameObject shadowBlock = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                shadowBlock.transform.SetParent(shadowTetrimino.transform);
+                shadowBlock.transform.localScale = block.lossyScale;
+                shadowBlock.transform.localPosition = block.localPosition;
+                shadowBlock.GetComponent<Renderer>().material.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
                 Destroy(shadowBlock.GetComponent<Collider>());
             }
         }
         shadowTetrimino.SetActive(true);
         UpdateShadowPosition();
     }
+
 
     public void DestroyShadow()
     {

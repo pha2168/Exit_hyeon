@@ -13,7 +13,7 @@ public class Manager_Tetris : MonoBehaviour
 
     public GameObject gameOverUI;
 
-    private bool isGameOver = false;
+    public bool isGameOver = false;
     public Tetris_Tetrimino currentTetrimino;
     private Tetris_Tetrimino nextTetrimino;
 
@@ -37,6 +37,11 @@ public class Manager_Tetris : MonoBehaviour
         SpawnTetrimino();
     }
 
+    public void OnBlockLanded()
+    {
+        SpawnTetrimino();
+    }
+
     public void TriggerGameOver()
     {
         isGameOver = true;
@@ -49,7 +54,7 @@ public class Manager_Tetris : MonoBehaviour
 
         Vector3 spawnPosition = new Vector3(2, 18, 2);
 
-        if(IsPositionOccupied(nextTetrimino))
+        if (IsPositionOccupied(spawnPosition, nextTetrimino))
         {
             TriggerGameOver();
             return;
@@ -62,15 +67,13 @@ public class Manager_Tetris : MonoBehaviour
         nextTetrimino = SpawnNextTetrimino();
     }
 
-    private bool IsPositionOccupied(Tetris_Tetrimino tetrimino)
+    private bool IsPositionOccupied(Vector3 spawnPosition, Tetris_Tetrimino tetrimino)
     {
         if (tetrimino == null) return false;
 
-        Vector3 position = new Vector3(2, 20, 2);
-
         foreach (Transform child in tetrimino.transform)
         {
-            Vector3 pos = Grid3D.Round(position + child.localPosition);
+            Vector3 pos = Grid3D.Round(spawnPosition + child.localPosition);
             if (!Grid3D.InsideGrid(pos) || Grid3D.GetTransformAtGridPosition(pos) != null)
             {
                 return true;
@@ -78,6 +81,7 @@ public class Manager_Tetris : MonoBehaviour
         }
         return false;
     }
+
 
     public Tetris_Tetrimino SpawnNextTetrimino()
     {
@@ -130,8 +134,6 @@ public class Manager_Tetris : MonoBehaviour
             case 6: selectedShape = Tetris_TetriminoShapes.ZShape; break;
             default: selectedShape = Tetris_TetriminoShapes.IShape; break;
         }
-
-        //Debug.Log($"Shape Index: {shapeIndex}, Shape: {string.Join(", ", selectedShape)}");
 
         return selectedShape;
     }

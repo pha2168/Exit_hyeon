@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TetriminoStatus : MonoBehaviour
 {
     // 추적할 태그 리스트
-    public string[] tagsToTrack = { "TAG_A", "TAG_B", "TAG_C", "TAG_D", "TAG_E", "TAG_F" };
+    public string[] tagsToTrack = { "CleanHouse", "WeaponStore", "Crime", "Hospital", "TrashHouse", "Store" };
 
     // 태그별 카운트를 Inspector에서 직접 확인할 수 있도록 public 변수로 선언
     private float TAG_A_Count;
@@ -108,11 +108,11 @@ public class TetriminoStatus : MonoBehaviour
     // Inspector에 노출되는 public 변수 업데이트
     private void UpdatePublicCounts()
     {
-        TAG_A_Count = taggedObjectCounts.ContainsKey("TAG_A") ? taggedObjectCounts["TAG_A"] : 0;
-        TAG_B_Count = taggedObjectCounts.ContainsKey("TAG_B") ? taggedObjectCounts["TAG_B"] : 0;
-        TAG_C_Count = taggedObjectCounts.ContainsKey("TAG_C") ? taggedObjectCounts["TAG_C"] : 0;
-        TAG_D_Count = taggedObjectCounts.ContainsKey("TAG_D") ? taggedObjectCounts["TAG_D"] : 0;
-        TAG_E_Count = taggedObjectCounts.ContainsKey("TAG_E") ? taggedObjectCounts["TAG_E"] : 0;
-        TAG_F_Count = taggedObjectCounts.ContainsKey("TAG_F") ? taggedObjectCounts["TAG_F"] : 0;
+        TAG_A_Count = taggedObjectCounts.ContainsKey("CleanHouse") ? taggedObjectCounts["CleanHouse"] : 0;
+        TAG_B_Count = taggedObjectCounts.ContainsKey("WeaponStore") ? taggedObjectCounts["WeaponStore"] : 0;
+        TAG_C_Count = taggedObjectCounts.ContainsKey("Crime") ? taggedObjectCounts["Crime"] : 0;
+        TAG_D_Count = taggedObjectCounts.ContainsKey("Hospital") ? taggedObjectCounts["Hospital"] : 0;
+        TAG_E_Count = taggedObjectCounts.ContainsKey("TrashHouse") ? taggedObjectCounts["TrashHouse"] : 0;
+        TAG_F_Count = taggedObjectCounts.ContainsKey("Store") ? taggedObjectCounts["Store"] : 0;
     }
 }
