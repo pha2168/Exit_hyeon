@@ -21163,6 +21163,7 @@ GameObject:
   - component: {fileID: 1980480666}
   - component: {fileID: 1980480668}
   - component: {fileID: 1980480667}
+  - component: {fileID: 1980480669}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -21214,7 +21215,27 @@ MonoBehaviour:
   nextTetriminoPrefab: {fileID: 2204556678566146805, guid: 4fe4c0ec18185f2498af44bde359b30c, type: 3}
   nextBlockPos: {fileID: 702430443}
   gameOverUI: {fileID: 1987837291}
+  isGameOver: 0
   currentTetrimino: {fileID: 0}
+--- !u!114 &1980480669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980480664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e1976cead83eb94896710e253946edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    NowDay: 0
+    BGMVolume: 1
+    SFXVolume: 1
+  day1: {fileID: 11400000, guid: 2c0fcb14277d70e4ab62c11b32f97b33, type: 2}
+  day2: {fileID: 11400000, guid: 83a1d88f9bb47b040abb264689a0ee29, type: 2}
+  day3: {fileID: 11400000, guid: 8307788036855d640bf9dd963183e0af, type: 2}
 --- !u!1 &1982129149
 GameObject:
   m_ObjectHideFlags: 0

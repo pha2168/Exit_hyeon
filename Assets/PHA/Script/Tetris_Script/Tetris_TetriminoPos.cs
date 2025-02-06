@@ -18,7 +18,7 @@ public class Tetris_TetriminoPos : MonoBehaviour
     public float lastMoveTime;
     private float previousYPosition;
 
-    private Tetris_Tetrimino tetrinimo;
+    public Tetris_Tetrimino tetrinimo;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class Tetris_TetriminoPos : MonoBehaviour
         lastMoveTime = Time.time;
         previousYPosition = transform.position.y;
 
-        tetrinimo = GetComponent<Tetris_Tetrimino>();
+        //tetrinimo = GetComponent<Tetris_Tetrimino>();
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class Tetris_TetriminoPos : MonoBehaviour
         
     }
 
-    public void setBlockPos(Vector3[] pos)
+    public void setBlockPositions(Vector3[] pos)
     {
         blockPositions = pos;
     }
@@ -46,12 +46,14 @@ public class Tetris_TetriminoPos : MonoBehaviour
         // 자식 블록이 이미 생성되어 있으면 추가 생성 방지
         if (transform.childCount > 0) return;
 
+
+        GameObject blockPrefab = SelectBlock();
         // 각 블록의 위치에 큐브를 생성하여 모양을 구성
         foreach (Vector3 pos in blockPositions)
         {
-            GameObject blockPrefab = SelectBlock();
             GameObject block = Instantiate(blockPrefab, transform.position + pos, Quaternion.identity);
             block.transform.parent = this.transform;
+
         }
     }
 

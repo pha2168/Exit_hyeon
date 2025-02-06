@@ -1,27 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tetris_Tetrimino : MonoBehaviour
 {
-    public float fallTime = 1.0f;
+    public float fallTime;
     public float lockDelay = 1.0f;
 
     private bool isLocked = false;
 
-    private Tetris_TetriminoPos tetrimino_pos;
-    private Tetris_TetriminoShadow tetrimino_sha;
+    public Tetris_TetriminoPos tetrimino_pos;
+    public Tetris_TetriminoShadow tetrimino_sha;
+    public setDayData dataManger;
 
     // Start is called before the first frame update
     void Start()
     {
-        tetrimino_pos = GetComponent<Tetris_TetriminoPos>();
-        tetrimino_sha = GetComponent<Tetris_TetriminoShadow>();
-
         tetrimino_pos.CreateBlocks();
         tetrimino_sha.CreateShadow();
+
+        fallTime = dataManger.setDropSpeed();
     }
 
     // Update is called once per frame
@@ -70,7 +71,7 @@ public class Tetris_Tetrimino : MonoBehaviour
         isLocked = true;
         Grid3D.AddBlockToGrid(transform);
         Grid3D.DeleteFullLines();
-        FindObjectOfType<GameManager>().OnBlockLanded();
+        FindObjectOfType<Manager_Tetris>().OnBlockLanded();
         tetrimino_sha.DestroyShadow();
         enabled = false;
     }
@@ -91,7 +92,8 @@ public class Tetris_Tetrimino : MonoBehaviour
 
     public void setBlockPos(Vector3[] pos)
     {
-        tetrimino_pos.setBlockPos(pos);
+        tetrimino_pos.setBlockPositions(pos);
+
     }
 
     public void createBlock()
