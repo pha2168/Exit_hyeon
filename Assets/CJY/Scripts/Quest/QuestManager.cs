@@ -35,7 +35,7 @@ public class QuestManager : MonoBehaviour
                 if (quest.currentCount >= quest.requiredCount)
                 {
                     quest.isCompleted = true;
-                    Debug.Log($"{quest.title} quest completed!");
+                    //Debug.Log($"{quest.title} quest completed!");
                     // 퀘스트가 완료되면 자동으로 다음 퀘스트를 표시
                     GenerateNextQuest();
                 }

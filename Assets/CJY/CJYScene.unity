@@ -3202,6 +3202,7 @@ GameObject:
   - component: {fileID: 1451881460}
   - component: {fileID: 1451881462}
   - component: {fileID: 1451881463}
+  - component: {fileID: 1451881464}
   m_Layer: 0
   m_Name: QuestManager
   m_TagString: Untagged
@@ -3255,7 +3256,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451881459}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d7b52ff57f5ef24d8eda76d936e5f14, type: 3}
   m_Name: 
@@ -3277,6 +3278,23 @@ MonoBehaviour:
   tagsToTrack:
   - Hospital
   - Crime
+--- !u!114 &1451881464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451881459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf37aa892c70e84c8966633010f9bce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests: []
+  questText1: {fileID: 0}
+  questText2: {fileID: 0}
+  questText1_1: {fileID: 0}
+  questText2_1: {fileID: 0}
 --- !u!1 &1453316097
 GameObject:
   m_ObjectHideFlags: 0
