@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 6173677340359226935}
   - component: {fileID: 7062371274692131218}
   - component: {fileID: 5036821021670411608}
+  - component: {fileID: 6884285213152918722}
   m_Layer: 0
   m_Name: trashhouse
   m_TagString: Untagged
@@ -178,3 +179,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6884285213152918722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838327323638181005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba01ea50357770e4db5a71daca5db6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
