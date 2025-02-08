@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f406ce5e862534e962cdd98c78bae9, type: 3}
+  m_Name: Cult_2
+  m_EditorClassIdentifier: 
+  questTitle: "\uC0AC\uC774\uBE44"
+  questDescription1: "\uC77C\uCC28 \uC885\uB8CC \uC2DC \uCCAD\uACB0\uB3C4\uB791 \uBD84\uC7C1
+    55\uC774\uC0C1"
+  questDescription2: "\uC77C\uCC28 \uC885\uB8CC \uC2DC 12\uCE35 \uC774\uC0C1"
+  requiredBlockCount_WeaponStore: 0
+  requiredBlockCount_CleanHouse: 0
+  requiredBlockCount_Store: 0
+  requiredBlockCount_CleanHouse_Store: 0
+  statusRequired_sentiment: 0
+  statusRequired_clear: 55
+  statusRequired_trouble: 55
+  floorLimit: 12
+  factionType: 2
+  questStep: 2

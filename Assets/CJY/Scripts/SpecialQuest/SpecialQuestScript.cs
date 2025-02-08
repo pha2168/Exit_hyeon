@@ -19,16 +19,30 @@ public class SpecialQuest : ScriptableObject
 
 
     // 파괴해야 할 블록 수 (공권력, 혁명군, 범죄집단)
-    public int requiredBlockCount_WeaponStore;
-    public int requiredBlockCount_CleanHouse;
-    public int requiredBlockCount_Store;
+    public int requiredBlock_WeaponStore;
+    public int countBlock_WeaponStore;
+
+    public int requiredBlock_CleanHouse;
+    public int countBlock_CleanHouse;
+
+    public int requiredBlock_Store;
+    public int countBlock_Store;
+
+    public int requiredBlock_CleanHouse_Store;
+    public int countBlock_CleanHouse_Store;
 
     // 필요 스테이더스 (혁명군, 사이비, 범죄집단)
     public int statusRequired_sentiment;
+    public int statusCount_sentiment;
+
     public int statusRequired_clear;
+    public int statusCount_clear;
+
     public int statusRequired_trouble;
+    public int statusCount_trouble;
 
     public int floorLimit;             // 층수 제한 (공권력, 사이비)
+    public int floorLimitcount;
 
     public FactionType factionType;    // 세력 타입 (공권력, 혁명군, 사이비, 범죄집단)
     public int questStep;              // 퀘스트 단계 (1, 2, 3)
