@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f406ce5e862534e962cdd98c78bae9, type: 3}
+  m_Name: CrimeSyndicate_3
+  m_EditorClassIdentifier: 
+  questTitle: "\uBC94\uC8C4\uC9D1\uB2E8"
+  questDescription1: "\uC77C\uCC28 \uC885\uB8CC \uC2DC \uBD84\uC7C1 40\uC774\uC0C1"
+  questDescription2: "\uC8FC\uAC70\uACF5\uAC04+\uC0C1\uC810 20\uAC1C \uC774\uC0C1
+    \uD30C\uAD34"
+  requiredBlock_WeaponStore: 0
+  countBlock_WeaponStore: 0
+  requiredBlock_CleanHouse: 0
+  countBlock_CleanHouse: 0
+  requiredBlock_Store: 0
+  countBlock_Store: 0
+  requiredBlock_CleanHouse_Store: 40
+  countBlock_CleanHouse_Store: 0
+  statusRequired_sentiment: 0
+  statusCount_sentiment: 0
+  statusRequired_clear: 0
+  statusCount_clear: 0
+  statusRequired_trouble: 40
+  statusCount_trouble: 0
+  floorLimit: 0
+  floorLimitcount: 0
+  factionType: 3
+  questStep: 3
