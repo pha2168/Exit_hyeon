@@ -7,6 +7,7 @@ public class SpecialQuestManager : MonoBehaviour
 {
     public List<SpecialQuest> quests; // 총 12개의 퀘스트를 저장하는 리스트
 
+
     // 세력별 + 단계별 퀘스트를 저장할 Dictionary
     private Dictionary<FactionType, Dictionary<int, SpecialQuest>> questDictionary;
 
@@ -19,20 +20,26 @@ public class SpecialQuestManager : MonoBehaviour
     public Text PublicAuthorityText2;
     public Text PublicAuthorityText3;
 
-    public Text RevolutionaryArmyText1; // 혁명군 첫 번째 퀘스트 텍스트
-    public Text RevolutionaryArmyText2;
-    public Text RevolutionaryArmyText3;
+    //public Text RevolutionaryArmyText1; // 혁명군 첫 번째 퀘스트 텍스트
+    //public Text RevolutionaryArmyText2;
+    //public Text RevolutionaryArmyText3;
 
-    public Text CultText1; // 사이비 첫 번째 퀘스트 텍스트
-    public Text CultText2;
-    public Text CultText3;
+    //public Text CultText1; // 사이비 첫 번째 퀘스트 텍스트
+    //public Text CultText2;
+    //public Text CultText3;
 
-    public Text CrimeSyndicateText1; // 범죄집단 첫 번째 퀘스트 텍스트
-    public Text CrimeSyndicateText2;
-    public Text CrimeSyndicateText3;
+    //public Text CrimeSyndicateText1; // 범죄집단 첫 번째 퀘스트 텍스트
+    //public Text CrimeSyndicateText2;
+    //public Text CrimeSyndicateText3;
 
     private void Start()
     {
+        foreach (var quest in quests)
+        {
+            quest.ResetQuest();
+            //Debug.Log($"[QuestManager] {quest.name} 초기화됨");
+        }
+
         // 게임 데이터 로드 후 세력별 퀘스트를 설정
         NowPublicAuthorityQuest = GetQuest(FactionType.PublicAuthority, Datamanager.Instance.data.PublicAuthority_Step);
         NowRevolutionaryArmyQuest = GetQuest(FactionType.RevolutionaryArmy, Datamanager.Instance.data.RevolutionaryArmy_Step);
@@ -40,14 +47,21 @@ public class SpecialQuestManager : MonoBehaviour
         NowCrimeSyndicateQuest = GetQuest(FactionType.CrimeSyndicate, Datamanager.Instance.data.CrimeSyndicate_Step);
 
         // 퀘스트 정보 출력 (디버그용)
-        Debug.Log(NowPublicAuthorityQuest.questTitle);  // 퀘스트 제목
-        Debug.Log(NowPublicAuthorityQuest.questDescription1);  // 퀘스트 설명
+        //Debug.Log(NowPublicAuthorityQuest.questTitle);  // 퀘스트 제목
+        Debug.Log(NowPublicAuthorityQuest.countBlock_WeaponStore); // 퀘스트 설명
 
         //세력별 퀘스트 유아이
         UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
         //UpdateRevolutionaryArmyText(NowRevolutionaryArmyQuest, RevolutionaryArmyText1, RevolutionaryArmyText2, RevolutionaryArmyText3);
         //UpdateCultText(NowCultQuest, CultText1, CultText2, CultText3);
         //UpdateCrimeSyndicateText(NowCrimeSyndicateQuest, CrimeSyndicateText1, CrimeSyndicateText2, CrimeSyndicateText3);
+    }
+
+    private void Update()
+    {
+        NowPublicAuthorityQuest.floorLimitcount = Grid3D.GridHeightLine();
+        UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
+
     }
 
     private void Awake()
@@ -89,6 +103,50 @@ public class SpecialQuestManager : MonoBehaviour
             }
         }
         return null; // 퀘스트가 존재하지 않으면 null 반환
+    }
+
+    public void SpecialQuestObjectDestroyed(string objectTag)
+    {
+        if (NowPublicAuthorityQuest != null)
+        {
+            // 무기 상점 파괴 카운트 증가
+            if (objectTag == "WeaponStore")
+            {
+                NowPublicAuthorityQuest.countBlock_WeaponStore++;
+            }
+            // 주거 공간 파괴 카운트 증가 (2단계 이상일 때만 적용)
+            else if (objectTag == "CleanHouse" && NowPublicAuthorityQuest.questStep >= 2)
+            {
+                NowPublicAuthorityQuest.countBlock_CleanHouse++;
+            }
+            UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
+        }
+
+    }
+
+    public void CheckPublicAuthorityQuestComplete()
+    {
+        if (NowPublicAuthorityQuest == null)
+            return;
+
+        // 기본 무기상점 파괴 조건 확인
+        bool weaponStoreCleared = NowPublicAuthorityQuest.countBlock_WeaponStore >= NowPublicAuthorityQuest.requiredBlock_WeaponStore;
+
+        // 층수 제한 확인
+        bool floorLimitCleared = NowPublicAuthorityQuest.floorLimitcount <= NowPublicAuthorityQuest.floorLimit;
+
+        // 주거공간 파괴 조건 (2단계 이상일 때만 체크)
+        bool cleanHouseCleared = NowPublicAuthorityQuest.questStep == 1 ||
+                                  NowPublicAuthorityQuest.countBlock_CleanHouse >= NowPublicAuthorityQuest.requiredBlock_CleanHouse;
+
+        // 모든 조건 충족 시 퀘스트 완료 처리
+        if (weaponStoreCleared && cleanHouseCleared && floorLimitCleared)
+        {
+            Datamanager.Instance.data.PublicAuthority_Step++;
+            Datamanager.Instance.SaveGameData();
+
+            //Debug.Log("공권력 퀘스트 완료! 다음 단계로 이동.");
+        }
     }
 
     private void UpdatePublicText(SpecialQuest quest, Text questText, Text questOrderText1, Text questOrderText2)

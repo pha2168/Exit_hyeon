@@ -21231,8 +21231,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
     NowDay: 0
-    BGMVolume: 1
-    SFXVolume: 1
+    PublicAuthority_Step: 0
+    RevolutionaryArmy_Step: 0
+    Cult_Step: 0
+    CrimeSyndicate_Step: 0
   day1: {fileID: 11400000, guid: 2c0fcb14277d70e4ab62c11b32f97b33, type: 2}
   day2: {fileID: 11400000, guid: 83a1d88f9bb47b040abb264689a0ee29, type: 2}
   day3: {fileID: 11400000, guid: 8307788036855d640bf9dd963183e0af, type: 2}
@@ -23057,7 +23059,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 585413442791997185, guid: e0836fae7b3477549a8bd6514b7ea7a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.919565
+      value: 9.41
       objectReference: {fileID: 0}
     - target: {fileID: 585413442791997185, guid: e0836fae7b3477549a8bd6514b7ea7a3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23099,6 +23101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_TrashHouse
       objectReference: {fileID: 0}
+    - target: {fileID: 6173677340359226935, guid: e0836fae7b3477549a8bd6514b7ea7a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23114,7 +23120,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1986565518245802435, guid: 54ae517f68622054abe4abda28eb9baf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.919565
+      value: 3.557
       objectReference: {fileID: 0}
     - target: {fileID: 1986565518245802435, guid: 54ae517f68622054abe4abda28eb9baf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23155,6 +23161,10 @@ PrefabInstance:
     - target: {fileID: 5456490084984505652, guid: 54ae517f68622054abe4abda28eb9baf, type: 3}
       propertyPath: m_Name
       value: Block_WeaponStore
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738122193209285493, guid: 54ae517f68622054abe4abda28eb9baf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23212,6 +23222,10 @@ PrefabInstance:
     - target: {fileID: 5173912507214629288, guid: e434814965747174789b501f6934bed1, type: 3}
       propertyPath: m_Name
       value: Block_CleanHouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264073310036290174, guid: e434814965747174789b501f6934bed1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23287,13 +23301,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Hospital
       objectReference: {fileID: 0}
+    - target: {fileID: 4170756917516705577, guid: 901efbd24ced69e4cb9d0e8bc8df02cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7935637402008354061, guid: 901efbd24ced69e4cb9d0e8bc8df02cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.919565
       objectReference: {fileID: 0}
     - target: {fileID: 7935637402008354061, guid: 901efbd24ced69e4cb9d0e8bc8df02cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.608471
+      value: 7.48
       objectReference: {fileID: 0}
     - target: {fileID: 7935637402008354061, guid: 901efbd24ced69e4cb9d0e8bc8df02cb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23342,7 +23360,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4981231070593091623, guid: 965c1bde54e265547ada75dd408e394e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.784
+      value: 7.31
       objectReference: {fileID: 0}
     - target: {fileID: 4981231070593091623, guid: 965c1bde54e265547ada75dd408e394e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23384,6 +23402,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_Crime
       objectReference: {fileID: 0}
+    - target: {fileID: 6891532972595455040, guid: 965c1bde54e265547ada75dd408e394e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23397,6 +23419,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2547965749813768583, guid: 46ebcdb057e444346b3b882856176fda, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6088501101996512988, guid: 46ebcdb057e444346b3b882856176fda, type: 3}
       propertyPath: m_Name
       value: Block_Store
@@ -23407,7 +23433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8879509160019627902, guid: 46ebcdb057e444346b3b882856176fda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.608471
+      value: 11.21
       objectReference: {fileID: 0}
     - target: {fileID: 8879509160019627902, guid: 46ebcdb057e444346b3b882856176fda, type: 3}
       propertyPath: m_LocalPosition.z

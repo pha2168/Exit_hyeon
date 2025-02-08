@@ -115,4 +115,19 @@ public class TetriminoStatus : MonoBehaviour
         TAG_E_Count = taggedObjectCounts.ContainsKey("TrashHouse") ? taggedObjectCounts["TrashHouse"] : 0;
         TAG_F_Count = taggedObjectCounts.ContainsKey("Store") ? taggedObjectCounts["Store"] : 0;
     }
+    public float GetSliderAValue()
+    {
+        return sliderA.value;
+    }
+
+    public float GetSliderBValue()
+    {
+        return sliderB.value;
+    }
+
+    public float GetSliderCValue()
+    {
+        return sliderC.value;
+    }
+
 }
