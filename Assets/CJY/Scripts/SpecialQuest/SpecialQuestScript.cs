@@ -46,5 +46,17 @@ public class SpecialQuest : ScriptableObject
 
     public FactionType factionType;    // 세력 타입 (공권력, 혁명군, 사이비, 범죄집단)
     public int questStep;              // 퀘스트 단계 (1, 2, 3)
+
+    public void ResetQuest()
+    {
+        countBlock_WeaponStore = 0;
+        countBlock_CleanHouse = 0;
+        countBlock_Store = 0;
+        countBlock_CleanHouse_Store = 0;
+        statusCount_sentiment = 0;
+        statusCount_clear = 0;
+        statusCount_trouble = 0;
+        floorLimitcount = 0;
+    }
 }
 

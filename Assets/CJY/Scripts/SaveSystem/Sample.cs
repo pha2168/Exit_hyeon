@@ -14,7 +14,15 @@ public class Sample : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ClearDayGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            BackDayGame();
+        }
     }
 
     //게임을 종료하면 자동저장
@@ -28,14 +36,18 @@ public class Sample : MonoBehaviour
     {
         if (Datamanager.Instance.data.NowDay < 3)
             Datamanager.Instance.data.NowDay += 1;
+        else
+            Debug.Log("일차 더이상 커질 수 없음");
 
         Datamanager.Instance.SaveGameData();
     }
 
     public void BackDayGame()
     {
-        if (Datamanager.Instance.data.NowDay > 0)
+        if (Datamanager.Instance.data.NowDay >1)
             Datamanager.Instance.data.NowDay -= 1;
+        else
+            Debug.Log("일차 더이상 작아질 수 없음");
 
         Datamanager.Instance.SaveGameData();
     }
