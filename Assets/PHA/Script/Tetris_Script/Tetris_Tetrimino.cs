@@ -16,14 +16,26 @@ public class Tetris_Tetrimino : MonoBehaviour
     public Tetris_TetriminoShadow tetrimino_sha;
     public setDayData dataManger;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        GameObject obj = GameObject.Find("GameManager");
+
+        if (obj != null)
+        {
+            dataManger = obj.GetComponent<setDayData>();
+        }
+
         tetrimino_pos.CreateBlocks();
         tetrimino_sha.CreateShadow();
 
-        fallTime = dataManger.setDropSpeed();
+        if (dataManger != null)
+        {
+            fallTime = dataManger.setDropSpeed();
+        }
     }
+
 
     // Update is called once per frame
     void Update()
