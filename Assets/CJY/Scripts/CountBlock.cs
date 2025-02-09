@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectCounterUI : MonoBehaviour
+public class CountBlock : MonoBehaviour
 {
     public Text objectCountText; // 모든 태그의 정보를 표시할 하나의 텍스트
     public List<string> tagsToTrack; // 확인할 태그 리스트
@@ -36,7 +36,7 @@ public class ObjectCounterUI : MonoBehaviour
     }
 
     // 특정 태그를 가진 오브젝트 수를 계산
-    private int CountObjectsWithTag(string tagName)
+    public int CountObjectsWithTag(string tagName)
     {
         return GameObject.FindGameObjectsWithTag(tagName).Length;
     }
