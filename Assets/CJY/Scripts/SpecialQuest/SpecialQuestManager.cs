@@ -11,6 +11,9 @@ public class SpecialQuestManager : MonoBehaviour
     // 세력별 + 단계별 퀘스트를 저장할 Dictionary
     private Dictionary<FactionType, Dictionary<int, SpecialQuest>> questDictionary;
 
+    private TetriminoStatus tetriminoStatus;
+    private CountBlock CountBlock;
+
     private SpecialQuest NowPublicAuthorityQuest;
     private SpecialQuest NowRevolutionaryArmyQuest;
     private SpecialQuest NowCultQuest;
@@ -40,6 +43,9 @@ public class SpecialQuestManager : MonoBehaviour
             //Debug.Log($"[QuestManager] {quest.name} 초기화됨");
         }
 
+        tetriminoStatus = FindObjectOfType<TetriminoStatus>();
+        CountBlock = FindObjectOfType<CountBlock>();
+        
         // 게임 데이터 로드 후 세력별 퀘스트를 설정
         NowPublicAuthorityQuest = GetQuest(FactionType.PublicAuthority, Datamanager.Instance.data.PublicAuthority_Step);
         NowRevolutionaryArmyQuest = GetQuest(FactionType.RevolutionaryArmy, Datamanager.Instance.data.RevolutionaryArmy_Step);
@@ -48,10 +54,12 @@ public class SpecialQuestManager : MonoBehaviour
 
         // 퀘스트 정보 출력 (디버그용)
         //Debug.Log(NowPublicAuthorityQuest.questTitle);  // 퀘스트 제목
-        Debug.Log(NowPublicAuthorityQuest.countBlock_WeaponStore); // 퀘스트 설명
+        //Debug.Log(NowRevolutionaryArmyQuest.countBlock_WeaponStore); // 퀘스트 설명
+        //Debug.Log(NowRevolutionaryArmyQuest.statusCount_sentiment);
+
 
         //세력별 퀘스트 유아이
-        UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
+        //UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
         //UpdateRevolutionaryArmyText(NowRevolutionaryArmyQuest, RevolutionaryArmyText1, RevolutionaryArmyText2, RevolutionaryArmyText3);
         //UpdateCultText(NowCultQuest, CultText1, CultText2, CultText3);
         //UpdateCrimeSyndicateText(NowCrimeSyndicateQuest, CrimeSyndicateText1, CrimeSyndicateText2, CrimeSyndicateText3);
@@ -59,8 +67,26 @@ public class SpecialQuestManager : MonoBehaviour
 
     private void Update()
     {
-        NowPublicAuthorityQuest.floorLimitcount = Grid3D.GridHeightLine();
-        UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
+        //공권력 퀘스트
+        //NowPublicAuthorityQuest.floorLimitcount = Grid3D.GridHeightLine();
+
+        //혁명군 퀘스트
+        //NowRevolutionaryArmyQuest.statusCount_sentiment = (int)tetriminoStatus.GetSliderAValue();
+        //NowRevolutionaryArmyQuest.countBlock_WeaponStore = CountBlock.CountObjectsWithTag("WeaponStore");
+        //Debug.Log(CountBlock.CountObjectsWithTag("WeaponStore"));
+        //Debug.Log(NowRevolutionaryArmyQuest.statusCount_sentiment);
+
+        //사이비 퀘스트
+        //NowCultQuest.statusCount_clear = (int)tetriminoStatus.GetSliderBValue();
+        //NowCultQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderCValue();
+        //NowCultQuest.floorLimitcount = Grid3D.GridHeightLine();
+
+        //범죄집단 퀘스트
+        //NowCrimeSyndicateQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderCValue();
+
+        //테스트 용도 텍스트 값 바꿔줘야함
+        //UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
+        //UpdateRevolutionaryArmyText(NowRevolutionaryArmyQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
 
     }
 
@@ -122,6 +148,16 @@ public class SpecialQuestManager : MonoBehaviour
             UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
         }
 
+        if (NowCrimeSyndicateQuest != null)
+        {
+            // 주거공간 또는 상점 파괴 카운트 증가
+            if (objectTag == "CleanHouse" || objectTag == "Store")
+            {
+                NowCrimeSyndicateQuest.countBlock_CleanHouse_Store++;
+            }
+            //UpdateCrimeSyndicateText(NowCrimeSyndicateQuest, CrimeSyndicateText1, CrimeSyndicateText2, CrimeSyndicateText3);
+        }
+
     }
 
     public void CheckPublicAuthorityQuestComplete()
@@ -146,6 +182,72 @@ public class SpecialQuestManager : MonoBehaviour
             Datamanager.Instance.SaveGameData();
 
             //Debug.Log("공권력 퀘스트 완료! 다음 단계로 이동.");
+        }
+    }
+
+    public void CheckRevolutionaryArmyQuestComplete()
+    {
+        if (NowRevolutionaryArmyQuest == null)
+            return;
+
+        // 민심 조건 확인
+        bool sentimentCleared = NowRevolutionaryArmyQuest.statusCount_sentiment >= NowRevolutionaryArmyQuest.statusRequired_sentiment;
+
+        // 무기 상점 개수 조건 확인
+        bool weaponStoreCleared = NowRevolutionaryArmyQuest.countBlock_WeaponStore >= NowRevolutionaryArmyQuest.requiredBlock_WeaponStore;
+
+        // 모든 조건 충족 시 퀘스트 완료 처리
+        if (sentimentCleared && weaponStoreCleared)
+        {
+            Datamanager.Instance.data.RevolutionaryArmy_Step++;
+            Datamanager.Instance.SaveGameData();
+
+            Debug.Log("혁명군 퀘스트 완료! 다음 단계로 이동.");
+        }
+    }
+
+    public void CheckCultQuestComplete()
+    {
+        if (NowCultQuest == null)
+            return;
+
+        // 청결도 조건 확인
+        bool cleanlinessCleared = NowCultQuest.statusCount_clear >= NowCultQuest.statusRequired_clear;
+
+        // 분쟁 수치 조건 (2단계 이상에서만 체크)
+        bool troubleCleared = NowCultQuest.questStep == 1 || NowCultQuest.statusCount_trouble >= NowCultQuest.statusRequired_trouble;
+
+        // 층수 제한 조건 확인
+        bool floorLimitCleared = NowCultQuest.floorLimitcount >= NowCultQuest.floorLimit;
+
+        // 모든 조건 충족 시 퀘스트 완료 처리
+        if (cleanlinessCleared && troubleCleared && floorLimitCleared)
+        {
+            Datamanager.Instance.data.Cult_Step++;
+            Datamanager.Instance.SaveGameData();
+
+            Debug.Log("사이비 퀘스트 완료! 다음 단계로 이동.");
+        }
+    }
+
+    public void CheckCrimeSyndicateQuestComplete()
+    {
+        if (NowCrimeSyndicateQuest == null)
+            return;
+
+        // 분쟁 수치 조건 확인
+        bool troubleCleared = NowCrimeSyndicateQuest.statusCount_trouble >= NowCrimeSyndicateQuest.statusRequired_trouble;
+
+        // 주거공간 + 상점 파괴 개수 조건 확인
+        bool cleanHouseStoreCleared = NowCrimeSyndicateQuest.countBlock_CleanHouse_Store >= NowCrimeSyndicateQuest.requiredBlock_CleanHouse_Store;
+
+        // 모든 조건 충족 시 퀘스트 완료 처리
+        if (troubleCleared && cleanHouseStoreCleared)
+        {
+            Datamanager.Instance.data.CrimeSyndicate_Step++;
+            Datamanager.Instance.SaveGameData();
+
+            Debug.Log("범죄집단 퀘스트 완료! 다음 단계로 이동.");
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class setDayData : MonoBehaviour
 {
-    public Data data;
+    private int day;
 
     [SerializeField]
     private DayData day1;
@@ -18,10 +18,19 @@ public class setDayData : MonoBehaviour
     private DayData day3;
     public DayData Day3 { set { day3 = value; } }
 
+    void Start()
+    {
+        Datamanager.Instance.LoadGameData();
+        day = Datamanager.Instance.data.NowDay;
+        UnityEngine.Debug.Log(day);
+    }
+
     public float setDropSpeed()
     {
-        switch (data.NowDay)
+        switch (day)
         {
+            case 0:
+                return day1.DropSpeed;
             case 1:
                 return day1.DropSpeed;
             case 2:
@@ -35,8 +44,10 @@ public class setDayData : MonoBehaviour
 
     public int setScoreMax()
     {
-        switch (data.NowDay)
+        switch (day)
         {
+            case 0:
+                return day1.ScoreMax;
             case 1:
                 return day1.ScoreMax;
             case 2:
