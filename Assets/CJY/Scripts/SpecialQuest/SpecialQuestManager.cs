@@ -85,8 +85,10 @@ public class SpecialQuestManager : MonoBehaviour
         //NowCrimeSyndicateQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderCValue();
 
         //테스트 용도 텍스트 값 바꿔줘야함
-        //UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
+        UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
         //UpdateRevolutionaryArmyText(NowRevolutionaryArmyQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
+        //UpdateCultText(NowCultQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
+        //UpdateCrimeSyndicateText(NowCrimeSyndicateQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
 
     }
 

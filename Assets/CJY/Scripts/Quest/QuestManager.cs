@@ -14,6 +14,9 @@ public class QuestManager : MonoBehaviour
     public Text questText1_1; // 첫 번째 퀘스트 순서 텍스트
     public Text questText2_1; // 두 번째 퀘스트 순서 텍스트
 
+    public Image questImage1;
+    public Image questImage2;
+
     private void Start()
     {
         InitializeQuests(); // 퀘스트 초기화
