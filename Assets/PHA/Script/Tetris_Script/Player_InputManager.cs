@@ -7,6 +7,7 @@ public class Player_InputManager : MonoBehaviour
     public static Player_InputManager Instance { get; private set; }
     private Tetris_Tetrimino tetriminoObjects;
     public Manager_Tetris tetrisManager;
+    public UI_Score uI_Score;
 
     void Awake()
     {
@@ -30,6 +31,11 @@ public class Player_InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            uI_Score.AddScore(10);
+        }
+
         if (!tetrisManager.isGameOver)
         {
             bool inputReceived = false;
