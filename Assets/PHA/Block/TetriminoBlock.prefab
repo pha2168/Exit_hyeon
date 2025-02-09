@@ -124,7 +124,6 @@ MonoBehaviour:
   lockDelay: 1
   tetrimino_pos: {fileID: 4725681989419523307}
   tetrimino_sha: {fileID: 949644734154404082}
-  dataManger: {fileID: 0}
 --- !u!114 &4725681989419523307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,12 +137,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockPositions: []
-  StoreBlock: {fileID: 1522322419371318096, guid: e24a53b75867a004fbe4fd19077e7324, type: 3}
-  HospitalBlock: {fileID: 3238150311018995382, guid: 5adeac5368def8840873753931818eea, type: 3}
-  CrimeBlock: {fileID: 7080071146139731835, guid: b32a4a64438b2dc44951fb008ab00d1e, type: 3}
-  CleanHouseBlock: {fileID: 6198333846274276985, guid: 6dd2275c2645a2a44bffb32166d303d0, type: 3}
-  TrashHouseBlock: {fileID: 6561167280057705420, guid: 5c60939d005dc074f8654e69f9cc925d, type: 3}
-  WeaponStoreBlock: {fileID: 7975651920080771749, guid: 18821b67f592dda4bb0cb2e08db776aa, type: 3}
+  StoreBlock: {fileID: 6088501101996512988, guid: 46ebcdb057e444346b3b882856176fda, type: 3}
+  HospitalBlock: {fileID: 3619452935885705395, guid: 901efbd24ced69e4cb9d0e8bc8df02cb, type: 3}
+  CrimeBlock: {fileID: 5439095105511395563, guid: 965c1bde54e265547ada75dd408e394e, type: 3}
+  CleanHouseBlock: {fileID: 5173912507214629288, guid: e434814965747174789b501f6934bed1, type: 3}
+  TrashHouseBlock: {fileID: 1009699123513747440, guid: e0836fae7b3477549a8bd6514b7ea7a3, type: 3}
+  WeaponStoreBlock: {fileID: 5456490084984505652, guid: 54ae517f68622054abe4abda28eb9baf, type: 3}
   lastMoveTime: 0
   tetrinimo: {fileID: 1813877357618607443}
 --- !u!114 &949644734154404082
