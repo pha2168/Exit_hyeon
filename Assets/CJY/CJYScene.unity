@@ -3436,6 +3436,10 @@ MonoBehaviour:
   tagsToTrack:
   - Hospital
   - Crime
+  - WeaponStore
+  - CleanHouse
+  - Store
+  - TrashHouse
 --- !u!114 &1451881464
 MonoBehaviour:
   m_ObjectHideFlags: 0
