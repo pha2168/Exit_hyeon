@@ -16,6 +16,10 @@ public class QuestManager : MonoBehaviour
 
     public Image questImage1;
     public Image questImage2;
+    public List<Sprite> questSprites; // 퀘스트 아이콘 리스트
+    public List<string> questTags; // 퀘스트 관련 태그 리스트
+
+    public UI_Score uI_Score;
 
     private void Start()
     {
@@ -132,6 +136,8 @@ public class QuestManager : MonoBehaviour
 
                 if (questScripts.Count > 0)
                 {
+                    uI_Score.AddScore(30);
+
                     // 리스트의 다음 퀘스트를 가져오고, 맨뒤로 이동
                     QuestScrip nextQuest = questScripts[0];
                     questScripts.RemoveAt(0);
@@ -203,21 +209,25 @@ public class QuestManager : MonoBehaviour
 
     private void UpdateQuestUI()
     {
-        // activeQuests 리스트를 순회하며 UI 업데이트
         for (int i = 0; i < activeQuests.Count; i++)
         {
             QuestScrip quest = activeQuests[i];
 
-            if (i == 0) UpdateQuestText(quest, questText1, questText1_1);
-            else if (i == 1) UpdateQuestText(quest, questText2, questText2_1);
+            if (i == 0)
+            {
+                UpdateQuestText(quest, questText1, questText1_1);
+                UpdateQuestImage(quest, questImage1);
+            }
+            else if (i == 1)
+            {
+                UpdateQuestText(quest, questText2, questText2_1);
+                UpdateQuestImage(quest, questImage2);
+            }
         }
 
-        // 나머지 슬롯은 비활성화
-        if (activeQuests.Count < 3)
-        {
-            if (questText1 != null && activeQuests.Count < 1) questText1.gameObject.SetActive(false);
-            if (questText2 != null && activeQuests.Count < 2) questText2.gameObject.SetActive(false);
-        }
+        // 퀘스트가 부족하면 UI 요소 비활성화
+        if (activeQuests.Count < 1) questText1.gameObject.SetActive(false);
+        if (activeQuests.Count < 2) questText2.gameObject.SetActive(false);
     }
 
     private void UpdateQuestText(QuestScrip quest, Text questText, Text questOrderText)
@@ -241,5 +251,22 @@ public class QuestManager : MonoBehaviour
         // 랜덤 태그를 반환 (사용자 요구에 따라 변경 가능)
         string[] possibleTags = { "CleanHouse", "WeaponStore", "Crime", "Hospital", "TrashHouse", "Store" };
         return possibleTags[Random.Range(0, possibleTags.Length)];
+    }
+
+    private void UpdateQuestImage(QuestScrip quest, Image questImage)
+    {
+        if (quest != null && questImage != null && questSprites.Count == questTags.Count)
+        {
+            int index = questTags.IndexOf(quest.tag); // 퀘스트 태그에 맞는 이미지 찾기
+            if (index != -1)
+            {
+                questImage.sprite = questSprites[index]; // 이미지 설정
+                questImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                questImage.gameObject.SetActive(false); // 이미지 없음
+            }
+        }
     }
 }
