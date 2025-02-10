@@ -34,13 +34,30 @@ public class Tetris_TetriminoShadow : MonoBehaviour
                 shadowBlock.transform.SetParent(shadowTetrimino.transform);
                 shadowBlock.transform.localScale = block.lossyScale;
                 shadowBlock.transform.localPosition = block.localPosition;
-                shadowBlock.GetComponent<Renderer>().material.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+
+                // 새 머터리얼 생성 후 투명도 적용
+                Material shadowMaterial = new Material(Shader.Find("Standard"));
+                shadowMaterial.color = new Color(0.5f, 0.5f, 0.5f, 0.5f); // 투명도 50%
+                shadowMaterial.SetFloat("_Mode", 3); // 투명 모드 설정
+                shadowMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+                shadowMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+                shadowMaterial.SetInt("_ZWrite", 0);
+                shadowMaterial.DisableKeyword("_ALPHATEST_ON");
+                shadowMaterial.EnableKeyword("_ALPHABLEND_ON");
+                shadowMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+                shadowMaterial.renderQueue = 3000;
+
+                // 머터리얼 적용
+                shadowBlock.GetComponent<Renderer>().material = shadowMaterial;
+
                 Destroy(shadowBlock.GetComponent<Collider>());
             }
         }
         shadowTetrimino.SetActive(true);
         UpdateShadowPosition();
     }
+
+
 
 
     public void DestroyShadow()
