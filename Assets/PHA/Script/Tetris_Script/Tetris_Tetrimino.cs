@@ -10,7 +10,7 @@ public class Tetris_Tetrimino : MonoBehaviour
     public float fallTime;
     public float lockDelay = 1.0f;
 
-    private bool isLocked = false;
+    public bool isLocked = false;
 
     public Tetris_TetriminoPos tetrimino_pos;
     public Tetris_TetriminoShadow tetrimino_sha;

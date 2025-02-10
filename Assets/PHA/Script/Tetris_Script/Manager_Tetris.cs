@@ -52,7 +52,7 @@ public class Manager_Tetris : MonoBehaviour
     {
         if (isGameOver) return;
 
-        Vector3 spawnPosition = new Vector3(2, 18, 2);
+        Vector3 spawnPosition = new Vector3(2, 15, 2);
 
         if (IsPositionOccupied(spawnPosition, nextTetrimino))
         {
@@ -63,6 +63,12 @@ public class Manager_Tetris : MonoBehaviour
         currentTetrimino = nextTetrimino;
         currentTetrimino.transform.position = spawnPosition;
         currentTetrimino.enabled = true;
+
+        Tetris_TetriminoShadow nextShadow = currentTetrimino.GetComponent<Tetris_TetriminoShadow>();
+        if (nextShadow != null)
+        {
+            nextShadow.CreateShadow();
+        }
 
         nextTetrimino = SpawnNextTetrimino();
     }
@@ -104,19 +110,37 @@ public class Manager_Tetris : MonoBehaviour
     {
         if (currentTetrimino == null || nextTetrimino == null) return;
 
+        // 현재 블록의 그림자 제거
+        Tetris_TetriminoShadow currentShadow = currentTetrimino.GetComponent<Tetris_TetriminoShadow>();
+        if (currentShadow != null)
+        {
+            currentShadow.DestroyShadow();
+        }
+
+        // 위치 변경
         Vector3 currentPosition = currentTetrimino.transform.position;
         Vector3 nextBlockPosition = nextBlockPos.position;
 
         currentTetrimino.transform.position = nextBlockPosition;
         nextTetrimino.transform.position = currentPosition;
 
+        // 테트리미노 교체
         Tetris_Tetrimino temp = currentTetrimino;
         currentTetrimino = nextTetrimino;
         nextTetrimino = temp;
 
+        // 현재 블록 활성화 & 다음 블록 비활성화
         currentTetrimino.enabled = true;
         nextTetrimino.enabled = false;
+
+        // 새로운 블록의 그림자 갱신
+        Tetris_TetriminoShadow nextShadow = currentTetrimino.GetComponent<Tetris_TetriminoShadow>();
+        if (nextShadow != null)
+        {
+            nextShadow.CreateShadow();
+        }
     }
+
 
     Vector3[] GetRandomShape()
     {

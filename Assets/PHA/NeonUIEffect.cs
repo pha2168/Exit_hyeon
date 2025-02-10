@@ -1,12 +1,14 @@
+using System;
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; // UI 요소 사용을 위해 필요
 
 public class NeonUIEffect : MonoBehaviour
 {
-    public Image neonImage; // 네온 효과를 적용할 UI 이미지
-    public Color baseColor = Color.cyan; // 기본 네온 색상
-    public Color normalColor = Color.white; // 원래 화면 색상
+    public UnityEngine.UI.Image neonImage; // Image 타입 명확하게 지정
+    public Color[] neonColors = { Color.cyan, Color.magenta, Color.yellow, Color.green }; // 네온 색상 목록
+    public Color normalColor = new Color(1f, 1f, 1f, 0.3f); // 기본 화면 색상 (투명도 30%)
     public AudioSource glitchSound; // 치지직 효과음 (선택 사항)
 
     private bool isFlickering = false;
@@ -15,10 +17,11 @@ public class NeonUIEffect : MonoBehaviour
     {
         if (neonImage == null)
         {
-            Debug.LogError("네온 이미지가 설정되지 않았습니다!");
+            UnityEngine.Debug.LogError("네온 이미지가 설정되지 않았습니다!");
             return;
         }
 
+        neonImage.color = normalColor; // 처음에는 기본 화면 색상 유지
         StartCoroutine(FlickerEffect());
     }
 
@@ -26,11 +29,11 @@ public class NeonUIEffect : MonoBehaviour
     {
         while (true)
         {
-            float normalTime = Random.Range(2.0f, 3.5f); // 원래 화면이 유지되는 시간 (더 길게)
-            float flickerTime = Random.Range(0.05f, 0.2f); // 네온 빛나는 시간 (더 짧게)
-            bool glitch = Random.value > 0.85f; // 15% 확률로 치지직 효과 발생
+            float normalTime = UnityEngine.Random.Range(2.0f, 3.5f); // 원래 화면 유지 시간 (더 길게)
+            float flickerTime = UnityEngine.Random.Range(0.05f, 0.2f); // 네온 색상 유지 시간 (더 짧게)
+            bool glitch = UnityEngine.Random.value > 0.85f; // 15% 확률로 치지직 효과 발생
 
-            // 원래 화면 유지 (더 오래)
+            // 기본 화면 유지 (투명도 30%)
             StartCoroutine(ChangeColor(normalColor, normalTime));
             yield return new WaitForSeconds(normalTime);
 
@@ -40,8 +43,10 @@ public class NeonUIEffect : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
 
-            // 짧게 네온 효과 반짝임
-            StartCoroutine(ChangeColor(baseColor, flickerTime));
+            // 네온 색상 랜덤 변경 (투명도 유지)
+            Color newNeonColor = neonColors[UnityEngine.Random.Range(0, neonColors.Length)];
+            newNeonColor.a = 0.3f; // 투명도 30% 유지
+            StartCoroutine(ChangeColor(newNeonColor, flickerTime));
             yield return new WaitForSeconds(flickerTime);
         }
     }
@@ -51,9 +56,9 @@ public class NeonUIEffect : MonoBehaviour
         if (glitchSound != null)
             glitchSound.Play(); // 치지직 소리 재생
 
-        neonImage.color = baseColor * 0.8f; // 살짝 어두워지도록
+        neonImage.color = new Color(1f, 1f, 1f, 0.3f); // 순간적으로 밝게
         yield return new WaitForSeconds(0.05f);
-        neonImage.color = normalColor; // 원래 색으로 복구
+        neonImage.color = normalColor; // 원래 색상으로 복구
     }
 
     IEnumerator ChangeColor(Color targetColor, float duration)
