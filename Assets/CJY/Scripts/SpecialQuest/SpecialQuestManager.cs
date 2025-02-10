@@ -22,18 +22,30 @@ public class SpecialQuestManager : MonoBehaviour
     public Text PublicAuthorityText1; // 공권력 첫 번째 퀘스트 텍스트
     public Text PublicAuthorityText2;
     public Text PublicAuthorityText3;
+    public Text PublicCountWeaponText;
+    public Text PublicCountCleanText;
+    public GameObject PublicCleanImage;
+    public Text PublicFloorText;
 
-    //public Text RevolutionaryArmyText1; // 혁명군 첫 번째 퀘스트 텍스트
-    //public Text RevolutionaryArmyText2;
-    //public Text RevolutionaryArmyText3;
+    public Text RevolutionaryArmyText1; // 혁명군 첫 번째 퀘스트 텍스트
+    public Text RevolutionaryArmyText2;
+    public Text RevolutionaryArmyText3;
+    public Text RevolutionsentimentyText;
+    public Text RevolutionWeaponText;
 
-    //public Text CultText1; // 사이비 첫 번째 퀘스트 텍스트
-    //public Text CultText2;
-    //public Text CultText3;
+    public Text CultText1; // 사이비 첫 번째 퀘스트 텍스트
+    public Text CultText2;
+    public Text CultText3;
+    public Text CultCleanText;
+    public Text CultTroubleText;
+    public GameObject CultTroubleImage;
+    public Text CultFloorText;
 
-    //public Text CrimeSyndicateText1; // 범죄집단 첫 번째 퀘스트 텍스트
-    //public Text CrimeSyndicateText2;
-    //public Text CrimeSyndicateText3;
+    public Text CrimeSyndicateText1; // 범죄집단 첫 번째 퀘스트 텍스트
+    public Text CrimeSyndicateText2;
+    public Text CrimeSyndicateText3;
+    public Text CrimeTroubleText;
+    public Text CrimeCountText;
 
     private void Start()
     {
@@ -59,36 +71,39 @@ public class SpecialQuestManager : MonoBehaviour
 
 
         //세력별 퀘스트 유아이
-        //UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
-        //UpdateRevolutionaryArmyText(NowRevolutionaryArmyQuest, RevolutionaryArmyText1, RevolutionaryArmyText2, RevolutionaryArmyText3);
-        //UpdateCultText(NowCultQuest, CultText1, CultText2, CultText3);
-        //UpdateCrimeSyndicateText(NowCrimeSyndicateQuest, CrimeSyndicateText1, CrimeSyndicateText2, CrimeSyndicateText3);
+        UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
+        UpdateRevolutionaryArmyText(NowRevolutionaryArmyQuest, RevolutionaryArmyText1, RevolutionaryArmyText2, RevolutionaryArmyText3);
+        UpdateCultText(NowCultQuest, CultText1, CultText2, CultText3);
+        UpdateCrimeSyndicateText(NowCrimeSyndicateQuest, CrimeSyndicateText1, CrimeSyndicateText2, CrimeSyndicateText3);
     }
 
     private void Update()
     {
         //공권력 퀘스트
-        //NowPublicAuthorityQuest.floorLimitcount = Grid3D.GridHeightLine();
+        NowPublicAuthorityQuest.floorLimitcount = Grid3D.GridHeightLine();
+        //Debug.Log((Grid3D.GridHeightLine()));
+        //Debug.Log(NowPublicAuthorityQuest.floorLimitcount);
 
         //혁명군 퀘스트
-        //NowRevolutionaryArmyQuest.statusCount_sentiment = (int)tetriminoStatus.GetSliderAValue();
-        //NowRevolutionaryArmyQuest.countBlock_WeaponStore = CountBlock.CountObjectsWithTag("WeaponStore");
+        NowRevolutionaryArmyQuest.statusCount_sentiment = (int)tetriminoStatus.GetSliderAValue();
+        NowRevolutionaryArmyQuest.countBlock_WeaponStore = CountBlock.CountObjectsWithTag("WeaponStore");
         //Debug.Log(CountBlock.CountObjectsWithTag("WeaponStore"));
+        //Debug.Log(NowRevolutionaryArmyQuest.statusCount_sentiment);
         //Debug.Log(NowRevolutionaryArmyQuest.statusCount_sentiment);
 
         //사이비 퀘스트
-        //NowCultQuest.statusCount_clear = (int)tetriminoStatus.GetSliderBValue();
-        //NowCultQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderCValue();
-        //NowCultQuest.floorLimitcount = Grid3D.GridHeightLine();
+        NowCultQuest.statusCount_clear = (int)tetriminoStatus.GetSliderBValue();
+        NowCultQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderCValue();
+        NowCultQuest.floorLimitcount = Grid3D.GridHeightLine();
 
         //범죄집단 퀘스트
-        //NowCrimeSyndicateQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderCValue();
+        NowCrimeSyndicateQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderCValue();
 
         //테스트 용도 텍스트 값 바꿔줘야함
         UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
-        //UpdateRevolutionaryArmyText(NowRevolutionaryArmyQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
-        //UpdateCultText(NowCultQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
-        //UpdateCrimeSyndicateText(NowCrimeSyndicateQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
+        UpdateRevolutionaryArmyText(NowRevolutionaryArmyQuest, RevolutionaryArmyText1, RevolutionaryArmyText2, RevolutionaryArmyText3);
+        UpdateCultText(NowCultQuest, CultText1, CultText2, CultText3);
+        UpdateCrimeSyndicateText(NowCrimeSyndicateQuest, CrimeSyndicateText1, CrimeSyndicateText2, CrimeSyndicateText3);
 
     }
 
@@ -261,14 +276,21 @@ public class SpecialQuestManager : MonoBehaviour
 
             if (quest.questStep == 1)
             {
-                questOrderText1.text = $"{quest.questDescription1} \n 무기상점  ({quest.countBlock_WeaponStore}/{quest.requiredBlock_WeaponStore})";
+                questOrderText1.text = $"{quest.questDescription1}";
+                PublicCountWeaponText.text = $"{quest.countBlock_WeaponStore}/{quest.requiredBlock_WeaponStore}";
+                PublicCountCleanText.text = "";
+                PublicCleanImage.SetActive(false);
             }
             else
             {
-                questOrderText1.text = $"{quest.questDescription1} \n무기상점 ({quest.countBlock_WeaponStore}/{quest.requiredBlock_WeaponStore}) 주거공간 ({quest.countBlock_CleanHouse}/{quest.requiredBlock_CleanHouse})";
+                questOrderText1.text = $"{quest.questDescription1}";
+                PublicCountWeaponText.text = $"{quest.countBlock_WeaponStore}/{quest.requiredBlock_WeaponStore}";
+                PublicCountCleanText.text = $"{quest.countBlock_CleanHouse}/{quest.requiredBlock_CleanHouse}";
+                PublicCleanImage.SetActive(true);
             }
 
-            questOrderText2.text = $"{quest.questDescription2} ({quest.floorLimitcount}/{quest.floorLimit})";
+            questOrderText2.text = $"{quest.questDescription2}";
+            PublicFloorText.text = $"{quest.floorLimitcount}/{quest.floorLimit}";
         }
     }
 
@@ -278,12 +300,11 @@ public class SpecialQuestManager : MonoBehaviour
         {
             questText.text = $"QUEST. {quest.questStep} {quest.questTitle}";
 
-            if (quest.questStep == 1)
-            {
-                questOrderText1.text = $"{quest.questDescription1} \n 현재 민심  ({quest.statusCount_sentiment})";
-            }
+            questOrderText1.text = $"{quest.questDescription1}";
+            RevolutionsentimentyText.text = $"{quest.statusCount_sentiment}/{quest.statusRequired_sentiment}";
 
-            questOrderText2.text = $"{quest.questDescription2} \n 현재 무기상점 갯수 ({quest.countBlock_WeaponStore})";
+            questOrderText2.text = $"{quest.questDescription2}";
+            RevolutionWeaponText.text = $"{quest.countBlock_WeaponStore}개";
         }
     }
 
@@ -295,14 +316,21 @@ public class SpecialQuestManager : MonoBehaviour
 
             if (quest.questStep == 1)
             {
-                questOrderText1.text = $"{quest.questDescription1} \n 현재 청결도  ({quest.statusCount_clear})";
+                questOrderText1.text = $"{quest.questDescription1}";
+                CultCleanText.text = $"{quest.statusCount_clear}/{quest.statusRequired_clear}";
+                CultTroubleText.text = $"";
+                CultTroubleImage.SetActive(false);
             }
             else
             {
-                questOrderText1.text = $"{quest.questDescription1} \n 현재 청결도  ({quest.statusCount_clear}) 현재 분쟁 ({quest.statusCount_trouble})";
+                questOrderText1.text = $"{quest.questDescription1}";
+                CultCleanText.text = $"{quest.statusCount_clear}/{quest.statusRequired_clear}";
+                CultTroubleText.text = $"{quest.statusCount_trouble}/{quest.statusRequired_trouble}";
+                CultTroubleImage.SetActive(true);
             }
 
-            questOrderText2.text = $"{quest.questDescription2} ({quest.floorLimitcount}/{quest.floorLimit})";
+            questOrderText2.text = $"{quest.questDescription2}";
+            CultFloorText.text = $"{quest.floorLimitcount}/{quest.floorLimit}";
         }
     }
 
@@ -312,12 +340,11 @@ public class SpecialQuestManager : MonoBehaviour
         {
             questText.text = $"QUEST. {quest.questStep} {quest.questTitle}";
 
-            if (quest.questStep == 1)
-            {
-                questOrderText1.text = $"{quest.questDescription1} \n 현재 분쟁  ({quest.statusCount_trouble})";
-            }
-
-            questOrderText2.text = $"{quest.questDescription2}  ({quest.countBlock_CleanHouse_Store}/{quest.requiredBlock_CleanHouse_Store})";
+            questOrderText1.text = $"{quest.questDescription1}";
+            CrimeTroubleText.text = $"{quest.statusCount_trouble}/{quest.statusRequired_trouble}";
+            
+            questOrderText2.text = $"{quest.questDescription2}";
+            CrimeCountText.text = $"{quest.countBlock_CleanHouse_Store}/{quest.requiredBlock_CleanHouse_Store}";
         }
     }
 }

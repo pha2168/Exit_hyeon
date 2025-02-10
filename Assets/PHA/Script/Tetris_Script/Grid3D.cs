@@ -53,6 +53,8 @@ public class Grid3D : MonoBehaviour
 
     public static void DeleteLine(int y)
     {
+        UI_Score scoreManager = GameObject.FindObjectOfType<UI_Score>(); // UI_Score 인스턴스 찾기
+
         for (int x = 0; x < width; x++)
         {
             for (int z = 0; z < depth; z++)
@@ -73,7 +75,14 @@ public class Grid3D : MonoBehaviour
                 }
             }
         }
+
+        // 점수 추가
+        if (scoreManager != null)
+        {
+            scoreManager.AddScore(20); // 예제 점수 (100점 증가)
+        }
     }
+
 
     public static void MoveAllBlocksDown(int y)
     {

@@ -29,7 +29,7 @@ MonoBehaviour:
   statusRequired_clear: 0
   statusCount_clear: 0
   statusRequired_trouble: 30
-  statusCount_trouble: 0
+  statusCount_trouble: 650
   floorLimit: 0
   floorLimitcount: 0
   factionType: 3
