@@ -28,7 +28,7 @@ public class CountBlock : MonoBehaviour
             if (i < objectCountTexts.Count) // UI 요소가 부족할 경우 대비
             {
                 int count = CountObjectsWithTag(tagsToTrack[i]);
-                objectCountTexts[i].text = $"{tagsToTrack[i]}: X {count}개";
+                objectCountTexts[i].text = $" X {count}";
             }
         }
     }
