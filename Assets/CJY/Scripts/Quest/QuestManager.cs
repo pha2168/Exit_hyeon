@@ -36,12 +36,17 @@ public class QuestManager : MonoBehaviour
             if (!quest.isCompleted && quest.questType == QuestType1.Count)
             {
                 // 태그가 일치하는 오브젝트의 개수를 확인
-                GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(quest.tag);
-                quest.currentCount = objectsWithTag.Length;
+                //GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(quest.tag);
+                //quest.currentCount = objectsWithTag.Length;
 
                 if (quest.currentCount >= quest.requiredCount)
                 {
                     quest.isCompleted = true;
+                    if (quest.isCompleted) 
+                    {
+                        uI_Score.AddScore(30);
+                    }
+
                     //Debug.Log($"{quest.title} quest completed!");
                     // 퀘스트가 완료되면 자동으로 다음 퀘스트를 표시
                     GenerateNextQuest();
@@ -136,7 +141,7 @@ public class QuestManager : MonoBehaviour
 
                 if (questScripts.Count > 0)
                 {
-                    uI_Score.AddScore(30);
+                    Debug.Log("일반퀘스트 클리어");
 
                     // 리스트의 다음 퀘스트를 가져오고, 맨뒤로 이동
                     QuestScrip nextQuest = questScripts[0];
