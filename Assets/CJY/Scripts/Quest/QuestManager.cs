@@ -21,6 +21,8 @@ public class QuestManager : MonoBehaviour
 
     public UI_Score uI_Score;
 
+    private bool isGameStarted = false;  // 게임 시작 여부 플래그
+
     private void Start()
     {
         InitializeQuests(); // 퀘스트 초기화
@@ -30,25 +32,19 @@ public class QuestManager : MonoBehaviour
 
     private void Update()
     {
+        if (!isGameStarted) return;  // 게임이 시작되기 전에는 퀘스트 검사 X
+
         // 퀘스트 진행 상황 업데이트
+        // 주의: currentCount가 자동 증가하는지 확인
         foreach (QuestScrip quest in activeQuests)
         {
             if (!quest.isCompleted && quest.questType == QuestType1.Count)
             {
-                // 태그가 일치하는 오브젝트의 개수를 확인
-                //GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(quest.tag);
-                //quest.currentCount = objectsWithTag.Length;
-
+                //Debug.Log($"[DEBUG] {quest.title}: {quest.currentCount}/{quest.requiredCount}");
                 if (quest.currentCount >= quest.requiredCount)
                 {
                     quest.isCompleted = true;
-                    if (quest.isCompleted) 
-                    {
-                        uI_Score.AddScore(30);
-                    }
-
-                    //Debug.Log($"{quest.title} quest completed!");
-                    // 퀘스트가 완료되면 자동으로 다음 퀘스트를 표시
+                    uI_Score.AddScore(30);
                     GenerateNextQuest();
                 }
             }
@@ -56,13 +52,19 @@ public class QuestManager : MonoBehaviour
 
         UpdateQuestUI(); // UI 업데이트
     }
+    void EnableQuestChecking()
+    {
+        isGameStarted = true;  // 퀘스트 검사 활성화
+    }
 
     private void InitializeQuests()
     {
-        // 모든 퀘스트 초기화
         foreach (QuestScrip quest in questScripts)
         {
             quest.ResetQuest();
+            quest.isCompleted = false;
+            quest.currentCount = 0; // 명확한 초기화
+            quest.requiredCount = Mathf.Max(1, quest.requiredCount); // 최소 1 보장
         }
     }
 
@@ -92,7 +94,7 @@ public class QuestManager : MonoBehaviour
             activeQuests.Add(dynamicQuest);
         }
 
-        Debug.Log($"총 {activeQuests.Count}개의 동적 퀘스트가 생성되었습니다.");
+        //Debug.Log($"총 {activeQuests.Count}개의 동적 퀘스트가 생성되었습니다.");
 
         // UI 업데이트 호출
         UpdateQuestUI();
@@ -160,7 +162,7 @@ public class QuestManager : MonoBehaviour
                     }
                     else
                     {
-                        activeQuests[i].requiredCount = nextQuest.requiredCount;
+                        activeQuests[i].requiredCount = Mathf.Max(1, nextQuest.requiredCount); // 최소 1개 이상
                     }
 
                     activeQuests[i].ResetQuest(); // 초기화
@@ -175,18 +177,18 @@ public class QuestManager : MonoBehaviour
 
     private void ModifyQuestContent(QuestScrip baseQuest, QuestScrip dynamicQuest)
     {
-        // Destroy 타입일 경우에만 requiredCount를 랜덤으로 변경
         if (baseQuest.questType == QuestType1.Destroy)
         {
-            dynamicQuest.requiredCount = Random.Range(3, 10); // 랜덤 범위 설정 (예: 3 ~ 10)
+            dynamicQuest.requiredCount = Random.Range(3, 10); // 최소 3개 이상 필요
         }
         else
         {
-            dynamicQuest.requiredCount = baseQuest.requiredCount; // Count 타입은 기존 값 유지
+            dynamicQuest.requiredCount = baseQuest.requiredCount; // 기존 값 유지
         }
+
+        dynamicQuest.currentCount = 0; // 명확한 초기화 추가
     }
 
-   
     public void OnObjectDestroyed(string objectTag)
     {
         foreach (QuestScrip quest in activeQuests)
@@ -207,7 +209,6 @@ public class QuestManager : MonoBehaviour
                 }
             }
         }
-
         // UI 업데이트 호출
         UpdateQuestUI();
     }

@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
     public Slider bgmSlider;  // BGM 슬라이더
     public Slider sfxSlider;  // SFX 슬라이더
 
+    public GameObject AudioSetting;
+
     private void Awake()
     {
         if (Instance == null)
@@ -109,5 +111,15 @@ public class AudioManager : MonoBehaviour
             bgmAudioSource.clip = newBGM;
             bgmAudioSource.Play();
         }
+    }
+
+    public void AudioSettingOn()
+    {
+        AudioSetting.SetActive(true);
+    }
+
+    public void AudioSettingOff()
+    {
+        AudioSetting.SetActive(false);
     }
 }
