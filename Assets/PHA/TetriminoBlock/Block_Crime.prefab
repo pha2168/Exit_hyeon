@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 478204000231888129}
   - component: {fileID: 2825348711119681798}
   - component: {fileID: 7293088661342197445}
+  - component: {fileID: 3418052253279404413}
   m_Layer: 0
   m_Name: Block_Crime
   m_TagString: Crime
@@ -134,6 +135,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3418052253279404413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6084282748166164535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dcc8e2790b90243a1aa256db495919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &878297752620237800
 PrefabInstance:
   m_ObjectHideFlags: 0
