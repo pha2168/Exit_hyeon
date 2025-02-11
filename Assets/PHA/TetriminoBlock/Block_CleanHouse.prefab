@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2732899980016995968}
   - component: {fileID: 4912949614346748394}
   - component: {fileID: 4510034972085249141}
+  - component: {fileID: -355972697341288627}
   m_Layer: 0
   m_Name: Block_CleanHouse
   m_TagString: CleanHouse
@@ -134,6 +135,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-355972697341288627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6474036338248419828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dcc8e2790b90243a1aa256db495919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2740524103971359960
 PrefabInstance:
   m_ObjectHideFlags: 0

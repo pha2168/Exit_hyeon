@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 777754682005959816}
   - component: {fileID: 4393039452678557235}
   - component: {fileID: 1056212236508489415}
+  - component: {fileID: -4488134961004524673}
   m_Layer: 0
   m_Name: Blcok_TrashHouse
   m_TagString: TrashHouse
@@ -134,6 +135,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4488134961004524673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120461515474030466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dcc8e2790b90243a1aa256db495919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7179559411686783671
 PrefabInstance:
   m_ObjectHideFlags: 0
