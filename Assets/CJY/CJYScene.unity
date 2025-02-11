@@ -3800,6 +3800,27 @@ MonoBehaviour:
   PublicAuthorityText1: {fileID: 1327821919}
   PublicAuthorityText2: {fileID: 1636938589}
   PublicAuthorityText3: {fileID: 1289055056}
+  PublicCountWeaponText: {fileID: 0}
+  PublicCountCleanText: {fileID: 0}
+  PublicCleanImage: {fileID: 0}
+  PublicFloorText: {fileID: 0}
+  RevolutionaryArmyText1: {fileID: 0}
+  RevolutionaryArmyText2: {fileID: 0}
+  RevolutionaryArmyText3: {fileID: 0}
+  RevolutionsentimentyText: {fileID: 0}
+  RevolutionWeaponText: {fileID: 0}
+  CultText1: {fileID: 0}
+  CultText2: {fileID: 0}
+  CultText3: {fileID: 0}
+  CultCleanText: {fileID: 0}
+  CultTroubleText: {fileID: 0}
+  CultTroubleImage: {fileID: 0}
+  CultFloorText: {fileID: 0}
+  CrimeSyndicateText1: {fileID: 0}
+  CrimeSyndicateText2: {fileID: 0}
+  CrimeSyndicateText3: {fileID: 0}
+  CrimeTroubleText: {fileID: 0}
+  CrimeCountText: {fileID: 0}
 --- !u!1 &1453316097
 GameObject:
   m_ObjectHideFlags: 0
@@ -4149,6 +4170,7 @@ MonoBehaviour:
   sfxAudioSource: {fileID: 0}
   bgmSlider: {fileID: 1108012042}
   sfxSlider: {fileID: 1511385401}
+  AudioSetting: {fileID: 0}
 --- !u!4 &1544558135
 Transform:
   m_ObjectHideFlags: 0
@@ -4804,7 +4826,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0f075a23cbf23dd478f795fa33203ae6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b6636fce79ade674e81bb9356066b4fb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1

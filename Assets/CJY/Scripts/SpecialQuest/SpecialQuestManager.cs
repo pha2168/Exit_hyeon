@@ -57,8 +57,11 @@ public class SpecialQuestManager : MonoBehaviour
 
         tetriminoStatus = FindObjectOfType<TetriminoStatus>();
         CountBlock = FindObjectOfType<CountBlock>();
-        
+
         // 게임 데이터 로드 후 세력별 퀘스트를 설정
+
+        Datamanager.Instance.LoadGameData();
+
         NowPublicAuthorityQuest = GetQuest(FactionType.PublicAuthority, Datamanager.Instance.data.PublicAuthority_Step);
         NowRevolutionaryArmyQuest = GetQuest(FactionType.RevolutionaryArmy, Datamanager.Instance.data.RevolutionaryArmy_Step);
         NowCultQuest = GetQuest(FactionType.Cult, Datamanager.Instance.data.Cult_Step);
@@ -68,7 +71,8 @@ public class SpecialQuestManager : MonoBehaviour
         //Debug.Log(NowPublicAuthorityQuest.questTitle);  // 퀘스트 제목
         //Debug.Log(NowRevolutionaryArmyQuest.countBlock_WeaponStore); // 퀘스트 설명
         //Debug.Log(NowRevolutionaryArmyQuest.statusCount_sentiment);
-
+        if (NowPublicAuthorityQuest == null)
+            Debug.Log("없음");
 
         //세력별 퀘스트 유아이
         UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
