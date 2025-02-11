@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/CJY/CJYScene.unity
-    guid: 2288dca501458cc44ae11a141bc50aef
+    path: Assets/PHA/MainTittleScene.unity
+    guid: 9a40d0ff9027afd418a440cf8a9939cb
   - enabled: 1
     path: Assets/CJY/Select.unity
     guid: 73d312196f559164880c11c6abb54841
+  - enabled: 1
+    path: Assets/CJY/CJYScene.unity
+    guid: 2288dca501458cc44ae11a141bc50aef
   m_configObjects: {}

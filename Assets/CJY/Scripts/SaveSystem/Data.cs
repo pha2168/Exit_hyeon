@@ -7,12 +7,12 @@ using UnityEngine;
 
 public class Data
 {
-    public int  NowDay;
+    public int  NowDay = 1;
 
-    public int PublicAuthority_Step;
-    public int RevolutionaryArmy_Step;
-    public int Cult_Step;
-    public int CrimeSyndicate_Step;
+    public int PublicAuthority_Step = 1;
+    public int RevolutionaryArmy_Step = 1;
+    public int Cult_Step = 1;
+    public int CrimeSyndicate_Step = 1;
 
     //저장할 데이터들 값 넣기
 }
