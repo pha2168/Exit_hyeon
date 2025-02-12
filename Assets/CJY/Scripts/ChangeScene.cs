@@ -21,7 +21,12 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene("MainTittleScene");
     }
 
-    void ExitGame()
+    public void InGameScene()
+    {
+        SceneManager.LoadScene("InGame");
+    }
+
+    public void ExitGame()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;  // 에디터 종료
