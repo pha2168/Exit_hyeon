@@ -199,9 +199,12 @@ public class SpecialQuestManager : MonoBehaviour
         // 모든 조건 충족 시 퀘스트 완료 처리
         if (weaponStoreCleared && cleanHouseCleared && floorLimitCleared)
         {
-            Datamanager.Instance.data.PublicAuthority_Step++;
-            Datamanager.Instance.SaveGameData();
-
+            if(Datamanager.Instance.data.PublicAuthority_Step != 3)
+            {
+                Datamanager.Instance.data.PublicAuthority_Step++;
+                Datamanager.Instance.SaveGameData();
+            }
+            
             //Debug.Log("공권력 퀘스트 완료! 다음 단계로 이동.");
         }
     }
@@ -220,10 +223,12 @@ public class SpecialQuestManager : MonoBehaviour
         // 모든 조건 충족 시 퀘스트 완료 처리
         if (sentimentCleared && weaponStoreCleared)
         {
-            Datamanager.Instance.data.RevolutionaryArmy_Step++;
-            Datamanager.Instance.SaveGameData();
-
-            Debug.Log("혁명군 퀘스트 완료! 다음 단계로 이동.");
+            if(Datamanager.Instance.data.RevolutionaryArmy_Step != 3)
+            {
+                Datamanager.Instance.data.RevolutionaryArmy_Step++;
+                Datamanager.Instance.SaveGameData();
+            }
+            //Debug.Log("혁명군 퀘스트 완료! 다음 단계로 이동.");
         }
     }
 
@@ -244,9 +249,12 @@ public class SpecialQuestManager : MonoBehaviour
         // 모든 조건 충족 시 퀘스트 완료 처리
         if (cleanlinessCleared && troubleCleared && floorLimitCleared)
         {
-            Datamanager.Instance.data.Cult_Step++;
-            Datamanager.Instance.SaveGameData();
-
+            if(Datamanager.Instance.data.Cult_Step != 3)
+            {
+                Datamanager.Instance.data.Cult_Step++;
+                Datamanager.Instance.SaveGameData();
+            }
+            
             Debug.Log("사이비 퀘스트 완료! 다음 단계로 이동.");
         }
     }
@@ -265,9 +273,12 @@ public class SpecialQuestManager : MonoBehaviour
         // 모든 조건 충족 시 퀘스트 완료 처리
         if (troubleCleared && cleanHouseStoreCleared)
         {
-            Datamanager.Instance.data.CrimeSyndicate_Step++;
-            Datamanager.Instance.SaveGameData();
-
+            if (Datamanager.Instance.data.CrimeSyndicate_Step != 3)
+            {
+                Datamanager.Instance.data.CrimeSyndicate_Step++;
+                Datamanager.Instance.SaveGameData();
+            }
+            
             Debug.Log("범죄집단 퀘스트 완료! 다음 단계로 이동.");
         }
     }

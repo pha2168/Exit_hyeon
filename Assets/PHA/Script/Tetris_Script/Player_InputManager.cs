@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Player_InputManager : MonoBehaviour
 {
-    public static Player_InputManager Instance { get; private set; }
+    //public static Player_InputManager Instance { get; private set; }
     private Tetris_Tetrimino tetriminoObjects;
     public Manager_Tetris tetrisManager;
     public UI_Score uI_Score;
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //if (Instance == null)
+        //{
+        //    Instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     // Start is called before the first frame update
