@@ -40,7 +40,7 @@ public class CountBlock : MonoBehaviour
     public int CountObjectsWithTag(string tagName)
     {
         Tetris_Tetrimino[] tetriminos = FindObjectsOfType<Tetris_Tetrimino>(); // 모든 Tetris_Tetrimino 찾기
-        Debug.Log($"Tetris_Tetrimino 개수: {tetriminos.Length}");
+        //Debug.Log($"Tetris_Tetrimino 개수: {tetriminos.Length}");
 
         int count = 0;
 
@@ -48,7 +48,7 @@ public class CountBlock : MonoBehaviour
         {
             if (tetrimino.isLocked) // isLocked가 true인 경우만 확인
             {
-                Debug.Log($"Tetris_Tetrimino {tetrimino.gameObject.name}의 isLocked가 true이므로 확인");
+                //Debug.Log($"Tetris_Tetrimino {tetrimino.gameObject.name}의 isLocked가 true이므로 확인");
 
                 foreach (Transform child in tetrimino.transform) // 자식 오브젝트 확인
                 {
@@ -60,7 +60,7 @@ public class CountBlock : MonoBehaviour
             }
         }
 
-        Debug.Log($"태그 [{tagName}]을 가진 자식 오브젝트 개수: {count}");
+       // Debug.Log($"태그 [{tagName}]을 가진 자식 오브젝트 개수: {count}");
         return count;
     }
 
