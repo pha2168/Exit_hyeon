@@ -14,5 +14,11 @@ public class Data
     public int Cult_Step = 1;
     public int CrimeSyndicate_Step = 1;
 
+    public int Public_s = 0;
+    public int Revolution_s = 0;
+    public int Crime_s = 0;
+    public int Cult_s = 0;
+
+
     //저장할 데이터들 값 넣기
 }
