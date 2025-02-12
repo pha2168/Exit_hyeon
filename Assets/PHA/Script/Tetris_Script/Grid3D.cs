@@ -16,10 +16,9 @@ public class Grid3D : MonoBehaviour
     public static bool InsideGrid(Vector3 pos)
     {
         return ((int)pos.x >= 0 && (int)pos.x < width &&
-                (int)pos.y >= 0 && (int)pos.y < height &&
+                (int)pos.y >= 1 && (int)pos.y < height &&
                 (int)pos.z >= 0 && (int)pos.z < depth);
     }
-
 
     public static Transform GetTransformAtGridPosition(Vector3 pos)
     {
@@ -135,6 +134,4 @@ public class Grid3D : MonoBehaviour
         }
         return HightLine;
     }
-
-
 }

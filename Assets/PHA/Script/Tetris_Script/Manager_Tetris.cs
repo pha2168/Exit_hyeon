@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Manager_Tetris : MonoBehaviour
 {
-    public static Manager_Tetris Instance { get; private set; }
+    //public static Manager_Tetris Instance { get; private set; }
 
     public GameObject tetriminoPrefab;
     public GameObject nextTetriminoPrefab;
@@ -19,15 +19,15 @@ public class Manager_Tetris : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //if (Instance == null)
+        //{
+        //    Instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     void Start()
@@ -52,7 +52,7 @@ public class Manager_Tetris : MonoBehaviour
     {
         if (isGameOver) return;
 
-        Vector3 spawnPosition = new Vector3(2, 15, 2);
+        Vector3 spawnPosition = new Vector3(2, 16, 2);
 
         if (IsPositionOccupied(spawnPosition, nextTetrimino))
         {
@@ -87,7 +87,6 @@ public class Manager_Tetris : MonoBehaviour
         }
         return false;
     }
-
 
     public Tetris_Tetrimino SpawnNextTetrimino()
     {
@@ -141,7 +140,6 @@ public class Manager_Tetris : MonoBehaviour
         }
     }
 
-
     Vector3[] GetRandomShape()
     {
         int shapeIndex = UnityEngine.Random.Range(0, 7);
@@ -161,5 +159,4 @@ public class Manager_Tetris : MonoBehaviour
 
         return selectedShape;
     }
-
 }

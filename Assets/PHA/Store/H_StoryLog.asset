@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82f08936e021f448aff0550c01e7514, type: 3}
-  m_Name: Day_1_Data
+  m_Script: {fileID: 11500000, guid: 227a24f0ccfc9c947924a4c4dc173493, type: 3}
+  m_Name: H_StoryLog
   m_EditorClassIdentifier: 
-  dayNum: 1
-  dropSpeed: 1
-  scoreMax: 500
+  logEntries:
+  - dayName: day1
+    logs:
+    - "\uC218\uACE0\uD558\uC168\uC5B4\uC694"
+  - dayName: day2
+    logs:
+    - "\uC624\uB298 \uC77C\uB3C4 \uC798 \uB05D\uB0AC\uC5B4\uC694"

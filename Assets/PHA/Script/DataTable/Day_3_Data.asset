@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Day_3_Data
   m_EditorClassIdentifier: 
   dayNum: 3
-  dropSpeed: 1.1
-  scoreMax: 3000
+  dropSpeed: 0.9
+  scoreMax: 1500

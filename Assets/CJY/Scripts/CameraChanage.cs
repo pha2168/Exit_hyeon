@@ -13,6 +13,8 @@ public class CameraChanage : MonoBehaviour
         // 초기 설정: camera1 활성화, camera2 비활성화
         camera1.enabled = true;
         camera2.enabled = false;
+
+
     }
 
     void Update()
