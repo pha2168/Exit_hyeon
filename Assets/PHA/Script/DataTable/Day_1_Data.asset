@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayNum: 1
   dropSpeed: 1
-  scoreMax: 1000
+  scoreMax: 500
