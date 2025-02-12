@@ -44,7 +44,7 @@ public class QuestManager : MonoBehaviour
                 if (quest.currentCount >= quest.requiredCount)
                 {
                     quest.isCompleted = true;
-                    uI_Score.AddScore(30);
+                    
                     GenerateNextQuest();
                 }
             }
@@ -144,6 +144,7 @@ public class QuestManager : MonoBehaviour
                 if (questScripts.Count > 0)
                 {
                     Debug.Log("일반퀘스트 클리어");
+                    uI_Score.AddScore(30);
 
                     // 리스트의 다음 퀘스트를 가져오고, 맨뒤로 이동
                     QuestScrip nextQuest = questScripts[0];

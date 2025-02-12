@@ -37,7 +37,7 @@ public class Tetris_TetriminoShadow : MonoBehaviour
 
                 // 새 머터리얼 생성 후 투명도 적용
                 Material shadowMaterial = new Material(Shader.Find("Standard"));
-                shadowMaterial.color = new Color(0.5f, 0.5f, 0.5f, 0.5f); // 투명도 50%
+                shadowMaterial.color = new Color(0.5f, 0.5f, 0.5f, 1f); // 투명도 50%
                 shadowMaterial.SetFloat("_Mode", 3); // 투명 모드 설정
                 shadowMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
                 shadowMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
