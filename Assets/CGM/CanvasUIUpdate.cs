@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CanvasUIUpdate : MonoBehaviour
 {
-    void OnEnable()
+    void Update()
     {
         // 캔버스 업데이트 강제 실행
         Canvas.ForceUpdateCanvases();

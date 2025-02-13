@@ -49,8 +49,8 @@ public class TetriminoStatus : MonoBehaviour
         UpdatePublicCounts();
 
         sliderA.value = TAG_Count_Mid + (TAG_A_Count * TAG_Count_X - TAG_B_Count * TAG_Count_X);
-        sliderB.value = TAG_Count_Mid + (TAG_C_Count * TAG_Count_X - TAG_D_Count * TAG_Count_X);
-        sliderC.value = TAG_Count_Mid + (TAG_E_Count * TAG_Count_X - TAG_F_Count * TAG_Count_X);
+        sliderB.value = TAG_Count_Mid + (TAG_C_Count * TAG_Count_X + TAG_D_Count * TAG_Count_X);
+        sliderC.value = TAG_Count_Mid + (TAG_E_Count * TAG_Count_X + TAG_F_Count * TAG_Count_X);
 
         // 삭제된 오브젝트를 정리하는 함수 호출
         CleanupTaggedObjects();
@@ -108,12 +108,12 @@ public class TetriminoStatus : MonoBehaviour
     // Inspector에 노출되는 public 변수 업데이트
     private void UpdatePublicCounts()
     {
-        TAG_A_Count = taggedObjectCounts.ContainsKey("CleanHouse") ? taggedObjectCounts["CleanHouse"] : 0;
-        TAG_B_Count = taggedObjectCounts.ContainsKey("WeaponStore") ? taggedObjectCounts["WeaponStore"] : 0;
-        TAG_C_Count = taggedObjectCounts.ContainsKey("Crime") ? taggedObjectCounts["Crime"] : 0;
-        TAG_D_Count = taggedObjectCounts.ContainsKey("Hospital") ? taggedObjectCounts["Hospital"] : 0;
-        TAG_E_Count = taggedObjectCounts.ContainsKey("TrashHouse") ? taggedObjectCounts["TrashHouse"] : 0;
-        TAG_F_Count = taggedObjectCounts.ContainsKey("Store") ? taggedObjectCounts["Store"] : 0;
+        TAG_A_Count = taggedObjectCounts.ContainsKey("Hospital") ? taggedObjectCounts["Hospital"] : 0;
+        TAG_B_Count = taggedObjectCounts.ContainsKey("TrashHouse") ? taggedObjectCounts["TrashHouse"] : 0;
+        TAG_C_Count = taggedObjectCounts.ContainsKey("WeaponStore") ? taggedObjectCounts["WeaponStore"] : 0;
+        TAG_D_Count = taggedObjectCounts.ContainsKey("Crime") ? taggedObjectCounts["Crime"] : 0;
+        TAG_E_Count = taggedObjectCounts.ContainsKey("Store") ? taggedObjectCounts["Store"] : 0;
+        TAG_F_Count = taggedObjectCounts.ContainsKey("CleanHouse") ? taggedObjectCounts["CleanHouse"] : 0;
     }
     public float GetSliderAValue()
     {
