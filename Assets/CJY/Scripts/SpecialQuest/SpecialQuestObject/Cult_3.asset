@@ -14,15 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questTitle: "\uC0AC\uC774\uBE44"
   questDescription1: "\uC77C\uCC28 \uC885\uB8CC \uC2DC \uCCAD\uACB0\uB3C4\uB791 \uBD84\uC7C1
-    60\uC774\uC0C1"
-  questDescription2: "\uC77C\uCC28 \uC885\uB8CC \uC2DC 14\uCE35 \uC774\uC0C1"
-  requiredBlockCount_WeaponStore: 0
-  requiredBlockCount_CleanHouse: 0
-  requiredBlockCount_Store: 0
-  requiredBlockCount_CleanHouse_Store: 0
+    755\uC774\uC0C1"
+  questDescription2: "\uC77C\uCC28 \uC885\uB8CC \uC2DC 13\uCE35 \uC774\uC0C1"
+  requiredBlock_WeaponStore: 0
+  countBlock_WeaponStore: 0
+  requiredBlock_CleanHouse: 0
+  countBlock_CleanHouse: 0
+  requiredBlock_Store: 0
+  countBlock_Store: 0
+  requiredBlock_CleanHouse_Store: 0
+  countBlock_CleanHouse_Store: 0
   statusRequired_sentiment: 0
-  statusRequired_clear: 60
-  statusRequired_trouble: 60
-  floorLimit: 14
+  statusCount_sentiment: 0
+  statusRequired_clear: 755
+  statusCount_clear: 0
+  statusRequired_trouble: 755
+  statusCount_trouble: 0
+  floorLimit: 13
+  floorLimitcount: 17
   factionType: 2
   questStep: 3

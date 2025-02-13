@@ -144,7 +144,7 @@ public class QuestManager : MonoBehaviour
                 if (questScripts.Count > 0)
                 {
                     Debug.Log("일반퀘스트 클리어");
-                    uI_Score.AddScore(30);
+                    uI_Score.AddScore(20);
 
                     // 리스트의 다음 퀘스트를 가져오고, 맨뒤로 이동
                     QuestScrip nextQuest = questScripts[0];
@@ -180,7 +180,7 @@ public class QuestManager : MonoBehaviour
     {
         if (baseQuest.questType == QuestType1.Destroy)
         {
-            dynamicQuest.requiredCount = Random.Range(3, 10); // 최소 3개 이상 필요
+            dynamicQuest.requiredCount = Random.Range(3, 11); // 최소 3개 이상 필요
         }
         else
         {
