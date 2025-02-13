@@ -10,7 +10,7 @@ public class RobbyDay : MonoBehaviour
 
     void Start()
     {
-        Datamanager.Instance.LoadGameData();
+        //Datamanager.Instance.LoadGameData();
         UpdateDayImage(Datamanager.Instance.data.NowDay);
     }
 
