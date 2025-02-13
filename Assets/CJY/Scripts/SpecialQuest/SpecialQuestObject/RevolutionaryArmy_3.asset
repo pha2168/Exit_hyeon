@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: RevolutionaryArmy_3
   m_EditorClassIdentifier: 
   questTitle: "\uD601\uBA85\uAD70"
-  questDescription1: "\uC77C\uCC28 \uC885\uB8CC \uC2DC \uBBFC\uC2EC 70\uC774\uC0C1"
-  questDescription2: "\uC77C\uCC28 \uC885\uB8CC \uC2DC \uBB34\uAE30\uC0C1\uC810 15\uAC1C\uC774\uC0C1"
-  requiredBlock_WeaponStore: 15
+  questDescription1: "\uC77C\uCC28 \uC885\uB8CC \uC2DC \uBBFC\uC2EC 810 \uC774\uC0C1"
+  questDescription2: "\uC77C\uCC28 \uC885\uB8CC \uC2DC \uBB34\uAE30\uC0C1\uC810 20\uAC1C
+    \uC774\uC0C1"
+  requiredBlock_WeaponStore: 20
   countBlock_WeaponStore: 0
   requiredBlock_CleanHouse: 0
   countBlock_CleanHouse: 0
@@ -23,8 +24,8 @@ MonoBehaviour:
   countBlock_Store: 0
   requiredBlock_CleanHouse_Store: 0
   countBlock_CleanHouse_Store: 0
-  statusRequired_sentiment: 70
-  statusCount_sentiment: 0
+  statusRequired_sentiment: 755
+  statusCount_sentiment: 670
   statusRequired_clear: 0
   statusCount_clear: 0
   statusRequired_trouble: 0

@@ -10,7 +10,7 @@ public class IngameDayChanage : MonoBehaviour
 
     void Start()
     {
-        Datamanager.Instance.LoadGameData();
+        //Datamanager.Instance.LoadGameData();
         Day = Datamanager.Instance.data.NowDay;
         DayText.text = $"{Day}";
     }

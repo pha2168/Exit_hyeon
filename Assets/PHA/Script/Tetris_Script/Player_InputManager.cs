@@ -33,7 +33,7 @@ public class Player_InputManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            uI_Score.AddScore(10);
+            uI_Score.AddScore(100);
         }
 
         if (!tetrisManager.isGameOver)

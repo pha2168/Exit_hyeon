@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CJY/InGame.unity
     guid: de80b0a07df6efa409eabcb798bb6406
+  - enabled: 1
+    path: Assets/PHA/StoryScene.unity
+    guid: 2b70ae25c4328a74faa280f7dd588d03
   m_configObjects: {}

@@ -19,6 +19,8 @@ public class Data
     public int Crime_s = 0;
     public int Cult_s = 0;
 
+    public string Ending = null;
+
 
     //저장할 데이터들 값 넣기
 }

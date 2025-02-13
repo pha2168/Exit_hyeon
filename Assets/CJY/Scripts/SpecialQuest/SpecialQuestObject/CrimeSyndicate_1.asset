@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CrimeSyndicate_1
   m_EditorClassIdentifier: 
   questTitle: "\uBC94\uC8C4\uC9D1\uB2E8"
-  questDescription1: "\uC77C\uCC28 \uC885\uB8CC \uC2DC \uBD84\uC7C1 30\uC774\uC0C1"
-  questDescription2: "\uC8FC\uAC70\uACF5\uAC04+\uC0C1\uC810 10\uAC1C \uC774\uC0C1
+  questDescription1: "\uC77C\uCC28 \uC885\uB8CC \uC2DC \uBD84\uC7C1 700\uC774\uC0C1"
+  questDescription2: "\uC8FC\uAC70\uACF5\uAC04+\uC0C1\uC810 50\uAC1C \uC774\uC0C1
     \uD30C\uAD34"
   requiredBlock_WeaponStore: 0
   countBlock_WeaponStore: 0
@@ -22,14 +22,14 @@ MonoBehaviour:
   countBlock_CleanHouse: 0
   requiredBlock_Store: 0
   countBlock_Store: 0
-  requiredBlock_CleanHouse_Store: 10
+  requiredBlock_CleanHouse_Store: 50
   countBlock_CleanHouse_Store: 0
   statusRequired_sentiment: 0
   statusCount_sentiment: 0
   statusRequired_clear: 0
   statusCount_clear: 0
-  statusRequired_trouble: 30
-  statusCount_trouble: 650
+  statusRequired_trouble: 700
+  statusCount_trouble: 0
   floorLimit: 0
   floorLimitcount: 0
   factionType: 3

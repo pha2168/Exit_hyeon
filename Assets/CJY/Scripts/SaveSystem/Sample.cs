@@ -14,15 +14,6 @@ public class Sample : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ClearDayGame();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            BackDayGame();
-        }
     }
 
     //게임을 종료하면 자동저장

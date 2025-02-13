@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PublicAuthority_2
   m_EditorClassIdentifier: 
   questTitle: "\uACF5\uAD8C\uB825"
-  questDescription1: "\uBB34\uAE30\uC0C1\uC810\uACFC \uC8FC\uAC70\uACF5\uAC04\uC744
-    \uD30C\uAD34"
-  questDescription2: "\uC77C\uCC28 \uC885\uB8CC \uC2DC 17\uCE35 \uC774\uD558"
-  requiredBlock_WeaponStore: 15
+  questDescription1: "\uBB34\uAE30\uC0C1\uC810 40\uAC1C\uC640 \uC8FC\uAC70\uACF5\uAC04\uC744
+    40\uAC1C \uD30C\uAD34"
+  questDescription2: "\uC77C\uCC28 \uC885\uB8CC \uC2DC 12\uCE35 \uC774\uD558"
+  requiredBlock_WeaponStore: 40
   countBlock_WeaponStore: 0
-  requiredBlock_CleanHouse: 10
+  requiredBlock_CleanHouse: 40
   countBlock_CleanHouse: 0
   requiredBlock_Store: 0
   countBlock_Store: 0
@@ -30,7 +30,7 @@ MonoBehaviour:
   statusCount_clear: 0
   statusRequired_trouble: 0
   statusCount_trouble: 0
-  floorLimit: 17
+  floorLimit: 12
   floorLimitcount: 0
   factionType: 0
   questStep: 2

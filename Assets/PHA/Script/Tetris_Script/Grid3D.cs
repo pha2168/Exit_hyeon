@@ -78,7 +78,7 @@ public class Grid3D : MonoBehaviour
         // 점수 추가
         if (scoreManager != null)
         {
-            scoreManager.AddScore(20); // 예제 점수 (100점 증가)
+            scoreManager.AddScore(50); // 예제 점수 (100점 증가)
         }
     }
 
