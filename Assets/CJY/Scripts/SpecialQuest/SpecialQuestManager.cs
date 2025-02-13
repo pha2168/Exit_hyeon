@@ -199,10 +199,14 @@ public class SpecialQuestManager : MonoBehaviour
         // 모든 조건 충족 시 퀘스트 완료 처리
         if (weaponStoreCleared && cleanHouseCleared && floorLimitCleared)
         {
-            if(Datamanager.Instance.data.PublicAuthority_Step != 3)
+            if(Datamanager.Instance.data.PublicAuthority_Step != 4)
             {
                 Datamanager.Instance.data.PublicAuthority_Step++;
                 Datamanager.Instance.SaveGameData();
+                if (Datamanager.Instance.data.Ending == null)
+                {
+                    Datamanager.Instance.data.Ending = "Public";
+                }
             }
             
             //Debug.Log("공권력 퀘스트 완료! 다음 단계로 이동.");
@@ -223,10 +227,14 @@ public class SpecialQuestManager : MonoBehaviour
         // 모든 조건 충족 시 퀘스트 완료 처리
         if (sentimentCleared && weaponStoreCleared)
         {
-            if(Datamanager.Instance.data.RevolutionaryArmy_Step != 3)
+            if(Datamanager.Instance.data.RevolutionaryArmy_Step != 4)
             {
                 Datamanager.Instance.data.RevolutionaryArmy_Step++;
                 Datamanager.Instance.SaveGameData();
+                if (Datamanager.Instance.data.Ending == null)
+                {
+                    Datamanager.Instance.data.Ending = "Revolution";
+                }
             }
             //Debug.Log("혁명군 퀘스트 완료! 다음 단계로 이동.");
         }
@@ -249,10 +257,15 @@ public class SpecialQuestManager : MonoBehaviour
         // 모든 조건 충족 시 퀘스트 완료 처리
         if (cleanlinessCleared && troubleCleared && floorLimitCleared)
         {
-            if(Datamanager.Instance.data.Cult_Step != 3)
+            if(Datamanager.Instance.data.Cult_Step != 4)
             {
                 Datamanager.Instance.data.Cult_Step++;
                 Datamanager.Instance.SaveGameData();
+
+                if(Datamanager.Instance.data.Ending == null)
+                {
+                    Datamanager.Instance.data.Ending = "Cult";
+                }
             }
             
             Debug.Log("사이비 퀘스트 완료! 다음 단계로 이동.");
@@ -273,10 +286,14 @@ public class SpecialQuestManager : MonoBehaviour
         // 모든 조건 충족 시 퀘스트 완료 처리
         if (troubleCleared && cleanHouseStoreCleared)
         {
-            if (Datamanager.Instance.data.CrimeSyndicate_Step != 3)
+            if (Datamanager.Instance.data.CrimeSyndicate_Step != 4)
             {
                 Datamanager.Instance.data.CrimeSyndicate_Step++;
                 Datamanager.Instance.SaveGameData();
+                if (Datamanager.Instance.data.Ending == null)
+                {
+                    Datamanager.Instance.data.Ending = "Crime";
+                }
             }
             
             Debug.Log("범죄집단 퀘스트 완료! 다음 단계로 이동.");
