@@ -19,3 +19,6 @@ MonoBehaviour:
   - dayName: day2
     logs:
     - "\uC624\uB298 \uC77C\uB3C4 \uC798 \uB05D\uB0AC\uC5B4\uC694"
+  - dayName: day3
+    logs:
+    - "\uC9C0\uAE08\uAE4C\uC9C0 \uC218\uACE0 \uB9CE\uC73C\uC168\uC5B4\uC694"
