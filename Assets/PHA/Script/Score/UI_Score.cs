@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class UI_Score : MonoBehaviour
 {
@@ -13,10 +14,19 @@ public class UI_Score : MonoBehaviour
     private int currentScore = 0;
     private TextMeshProUGUI activeFloatingText;
 
+    public SpecialQuestManager SpecialQuestManager;
+
+    public CanvasGroup canvasGroup; // CanvasGroup 참조
+    public float fadeDuration = 3.0f; // 페이드 지속 시간
+    private bool isQuestChecked = false; // 한 번만 실행되도록 플래그 추가
+
     public setDayData dataManger;
+    public GameObject Clear;
 
     void Start()
     {
+        canvasGroup.alpha = 0; // 처음엔 투명
+
         maxScore = dataManger.setScoreMax();
         UnityEngine.Debug.Log(maxScore);
 
@@ -26,7 +36,56 @@ public class UI_Score : MonoBehaviour
             scoreSlider.value = currentScore;
         }
 
+        if (SpecialQuestManager == null)
+        {
+            SpecialQuestManager = FindObjectOfType<SpecialQuestManager>();
+        }
+
+        if (SpecialQuestManager == null)
+        {
+            Debug.LogError("UI_Score: SpecialQuestManager를 찾을 수 없습니다!");
+        }
+
         UpdateScoreUI();
+    }
+
+    private void Update()
+    {
+        if (currentScore == maxScore && !isQuestChecked)
+        {
+            isQuestChecked = true; // 실행 후 다시 실행되지 않도록 설정
+            SpecialQuestManager.CheckPublicAuthorityQuestComplete();
+            SpecialQuestManager.CheckRevolutionaryArmyQuestComplete();
+            SpecialQuestManager.CheckCultQuestComplete();
+            SpecialQuestManager.CheckCrimeSyndicateQuestComplete();
+
+            Clear.SetActive(true);
+
+            Invoke("StartFadeOut", 1f);
+        }
+    }
+
+    public void StartFadeOut()
+    {
+        StartCoroutine(FadeOut());
+    }
+
+    IEnumerator FadeOut()
+    {
+        float elapsedTime = 0;
+        float startAlpha = canvasGroup.alpha; // 0이어야 함
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, 1, elapsedTime / fadeDuration); // 0 → 1
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1; // 완전히 불투명해짐
+        Debug.Log("페이드 인 완료!");
+
+        SceneManager.LoadScene("StoryScene");
     }
 
     public void AddScore(int amount)
