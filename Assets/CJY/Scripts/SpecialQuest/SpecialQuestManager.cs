@@ -89,19 +89,19 @@ public class SpecialQuestManager : MonoBehaviour
         //Debug.Log(NowPublicAuthorityQuest.floorLimitcount);
 
         //혁명군 퀘스트
-        NowRevolutionaryArmyQuest.statusCount_sentiment = (int)tetriminoStatus.GetSliderAValue();
+        NowRevolutionaryArmyQuest.statusCount_sentiment = (int)tetriminoStatus.GetSliderCValue();
         NowRevolutionaryArmyQuest.countBlock_WeaponStore = CountBlock.CountObjectsWithTag("WeaponStore");
         //Debug.Log(CountBlock.CountObjectsWithTag("WeaponStore"));
         //Debug.Log(NowRevolutionaryArmyQuest.statusCount_sentiment);
         //Debug.Log(NowRevolutionaryArmyQuest.statusCount_sentiment);
 
         //사이비 퀘스트
-        NowCultQuest.statusCount_clear = (int)tetriminoStatus.GetSliderBValue();
-        NowCultQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderCValue();
+        NowCultQuest.statusCount_clear = (int)tetriminoStatus.GetSliderAValue();
+        NowCultQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderBValue();
         NowCultQuest.floorLimitcount = Grid3D.GridHeightLine();
 
         //범죄집단 퀘스트
-        NowCrimeSyndicateQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderCValue();
+        NowCrimeSyndicateQuest.statusCount_trouble = (int)tetriminoStatus.GetSliderBValue();
 
         //테스트 용도 텍스트 값 바꿔줘야함
         UpdatePublicText(NowPublicAuthorityQuest, PublicAuthorityText1, PublicAuthorityText2, PublicAuthorityText3);
