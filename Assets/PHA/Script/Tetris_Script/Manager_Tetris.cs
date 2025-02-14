@@ -2,6 +2,7 @@ using System;
 using System.Collections.Specialized;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Manager_Tetris : MonoBehaviour
 {
@@ -46,6 +47,13 @@ public class Manager_Tetris : MonoBehaviour
     {
         isGameOver = true;
         gameOverUI.SetActive(true);
+
+        Invoke("GoRobby", 1.0f);
+    }
+
+    private void GoRobby()
+    {
+        SceneManager.LoadScene("Select");
     }
 
     public void SpawnTetrimino()
