@@ -7,12 +7,12 @@ public class CountBlock : MonoBehaviour
     public List<Text> objectCountTexts; // 태그별로 개별 UI 할당
     public List<string> tagsToTrack; // 확인할 태그 리스트
 
-    private int count;
+    //private int count;
 
     void Start()
     {
         UpdateAllTagCounts(); // 초기 UI 업데이트
-        count = 0;
+        //count = 0;
     }
 
     void Update()
